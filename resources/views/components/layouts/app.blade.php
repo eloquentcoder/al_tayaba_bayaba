@@ -45,7 +45,6 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/deepblack/assets/bootstrap/bootstrap.min.css') }}" />
 
-
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/deepblack/assets/plugins/owlcarousel/animate.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('themes/deepblack/assets/plugins/owlcarousel/owl.carousel.min.css') }}">
@@ -57,7 +56,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/deepblack/scss/flag-icon.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/deepblack/scss/style.css') }}">
     <script src="{{ asset('themes/deepblack/js/modernizr.custom.js') }}"></script>
-    @vite('resources/css/app.css')
 
     <style>
         .home-banner {

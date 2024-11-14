@@ -1,3 +1,5 @@
+
+
 <div>
     <style>
         .page-banner {
@@ -44,7 +46,7 @@
                                            placeholder="Email Or Username"
                                        />
                                    </div>
-                                   @error('email_username') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                   @error('email_username') <span style="color: red" >{{ $message }}</span> @enderror
                                </div>
                             </div>
                             <div class="box mb-4">
@@ -52,16 +54,19 @@
                                     Your password 
                                     <a href="{{ route('home.password-reset') }}" class="golden-text">Forget password?</a>
                                 </h4>
-                                <div class="input-group">
-                                    <div class="img">
-                                        <img src="{{ asset('themes/deepblack/img/icon/padlock.png')}}" alt="password img" />
+                                <div>
+                                    <div class="input-group">
+                                        <div class="img">
+                                            <img src="{{ asset('themes/deepblack/img/icon/padlock.png')}}" alt="password img" />
+                                        </div>
+                                        <input
+                                            type="password"
+                                            wire:model="password"
+                                            class="form-control"
+                                            placeholder="Password"
+                                        />
                                     </div>
-                                    <input
-                                        type="password"
-                                        wire:model="password"
-                                        class="form-control"
-                                        placeholder="Password"
-                                    />
+                                    @error('password') <span style="color: red" >{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="mb-4 bottom">

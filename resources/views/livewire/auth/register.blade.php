@@ -39,7 +39,7 @@
                                             </div>
                                             <input type="text" wire:model="first_name" class="form-control" value="" placeholder="First Name"/>
                                         </div>
-                                        @error('first_name')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                        @error('first_name')<span style="color: red;">{{ $message }}</span> @enderror
                                     </div>
                                  </div>
                             </div>
@@ -53,7 +53,7 @@
                                             </div>
                                             <input type="text" wire:model="last_name" class="form-control" value="" placeholder="Last Name"/>
                                         </div>
-                                        @error('last_name')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                        @error('last_name')<span style="color: red;">{{ $message }}</span> @enderror
                                     </div>
                                  </div>
                             </div>
@@ -67,7 +67,7 @@
                                             </div>
                                             <input type="text" wire:model="username" class="form-control" value="" placeholder="Username"/>
                                         </div>
-                                        @error('username')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                        @error('username')<span style="color: red;">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                         </div>
                                         <input type="text" wire:model="email" class="form-control" value="" placeholder="Email Address"/>
                                     </div>
-                                    @error('email')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                    @error('email')<span style="color: red;">{{ $message }}</span> @enderror
                                    </div>
                                  </div>
                             </div>
@@ -1487,11 +1487,11 @@
                                                         > Zimbabwe (+263)
                                                         </option>
                                                 </select>
-                                                @error('phone_code')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                                @error('phone_code')<span style="color: red;">{{ $message }}</span> @enderror
                                             </div>
                                            <div class="w-1/2 flex flex-col">
                                                 <input type="text" wire:model="phone_number" class="form-control dialcode-set" value="" placeholder="Phone Number">
-                                                @error('phone_number')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                                @error('phone_number')<span style="color: red;">{{ $message }}</span> @enderror
                                            </div>
                                         </div>
                                     </div>
@@ -1511,7 +1511,7 @@
                                         </div>
                                         <input type="password" wire:model="password" class="form-control" placeholder="Password"/>
                                     </div>
-                                    @error('password')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                    @error('password')<span style="color: red;">{{ $message }}</span> @enderror
                                   </div>
                                 </div>
                             </div>
@@ -1523,7 +1523,7 @@
                                             <img src="{{ asset('themes/deepblack/img/icon/padlock.png')}}" alt="Confirm Password img" />
                                         </div>
                                         <input type="password" wire:model="password_confirmation" class="form-control" placeholder="Confirm Password"/>
-                                        @error('password_confirmation')<span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                                        @error('password_confirmation')<span style="color: red;">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
