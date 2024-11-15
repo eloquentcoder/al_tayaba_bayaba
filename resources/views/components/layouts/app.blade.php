@@ -21,11 +21,11 @@
 
     <meta name="description" content="AL Tayaba International - Grow Wealth, Know Your Worth">
     <meta name="keywords" content="AL Tayaba International, emr, investment, invest, Investment Management Company,">
-    <link rel="shortcut icon" href="assets/uploads/logo/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('uploads/logo/logo.png')}}" type="image/x-icon">
 
-    <link rel="apple-touch-icon" href="assets/uploads/logo/logo.png">
+    <link rel="apple-touch-icon" href="{{ asset('uploads/logo/logo.png')}}">
     <title>AL Tayaba International | Home</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/uploads/logo/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/logo/logo.png')}}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="AL Tayaba International | Home">

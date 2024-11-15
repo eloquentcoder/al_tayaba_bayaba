@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="register.html">
+                        <a class="dropdown-item" href="{{ route('home.register') }}">
                             <img src="{{ asset('themes/deepblack/img/icon/user.png')}}" alt="Register" />
                             <span class="golden-text">Register</span>
                         </a>
