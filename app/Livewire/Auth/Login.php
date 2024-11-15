@@ -26,7 +26,7 @@ class Login extends Component
         // Attempt to login with the credentials
         if (Auth::attempt($credentials)) {
             // Redirect to the intended page after successful login
-            return redirect()->intended(route('dashboard.index'));
+            return redirect()->intended(route('portal.dashboard'));
         }
 
         // If authentication fails, show an error message

@@ -46,7 +46,7 @@ class Register extends Component
         Auth::login($user);
 
         // Redirect to the home page or intended route
-        return redirect()->intended(route('dashboard.index'));
+        return redirect()->intended(route('portal.dashboard'));
     }
 
     public function render()
