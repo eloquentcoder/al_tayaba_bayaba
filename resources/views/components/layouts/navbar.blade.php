@@ -40,13 +40,13 @@
                 </button>
                 <ul class="notification-dropdown user-dropdown">
                     <li>
-                        <a class="dropdown-item" href="{{ route('home.login') }}">
+                        <a class="dropdown-item" href="{{ route('login') }}">
                             <img src="{{ asset('themes/deepblack/img/icon/user.png')}}" alt="Login" />
                             <span class="golden-text">Login</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('home.register') }}">
+                        <a class="dropdown-item" href="{{ route('register') }}">
                             <img src="{{ asset('themes/deepblack/img/icon/user.png')}}" alt="Register" />
                             <span class="golden-text">Register</span>
                         </a>

@@ -1532,7 +1532,7 @@
                             <div class="mb-4 col-md-12 logindiv">
                                 <div class="textcolor">
                                     already User?                                   
-                                     <a href="{{ route('home.login') }}" class="golden-text">login</a>
+                                     <a href="{{ route('login') }}" class="golden-text">login</a>
                                 </div>
                                 <button type="submit" class="gold-btn">Sign Up</button>
                             </div>

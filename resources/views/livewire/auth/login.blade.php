@@ -52,7 +52,7 @@
                             <div class="box mb-4">
                                 <h4 class="golden-text">
                                     Your password 
-                                    <a href="{{ route('home.password-reset') }}" class="golden-text">Forget password?</a>
+                                    <a href="{{ route('password-reset') }}" class="golden-text">Forget password?</a>
                                 </h4>
                                 <div>
                                     <div class="input-group">
@@ -89,7 +89,7 @@
                                 </div>
                                 <span class="text-end">
                                     <div class="textcolor">
-                                    New User? <a href="{{ route('home.register') }}" class="golden-text">Register</a>
+                                    New User? <a href="{{ route('register') }}" class="golden-text">Register</a>
                                     </div>
                                 </span>
                             </div>
