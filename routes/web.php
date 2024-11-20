@@ -9,9 +9,11 @@ use App\Livewire\Home\Plan;
 use App\Livewire\Portal\MyReferral;
 use App\Livewire\Portal\Dashboard;
 use App\Livewire\Portal\Deposit;
+use App\Livewire\Portal\Packages;
 use App\Livewire\Portal\Payout;
 use App\Livewire\Portal\PayoutPreview;
 use App\Livewire\Portal\Profile;
+use App\Livewire\Portal\Transactions;
 use App\Livewire\Portal\TwoStepSecurity;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +35,9 @@ Route::middleware('auth')->as('portal.')->group(function () {
     Route::get('payout/preview', PayoutPreview::class)->name('payout-preview');
 
     Route::get('referrals', MyReferral::class)->name('referrals');
+    Route::get('packages', Packages::class)->name('packages');
+    Route::get('transactions', Transactions::class)->name('transactions');
+
+
 
 });

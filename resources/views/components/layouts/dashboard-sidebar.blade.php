@@ -56,14 +56,14 @@
     </div>
 
     <nav class="">
-        <a href="#" class="{{ request()->routeIs('portal.trading-partner') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center font-semibold p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+        <a href="#" class="{{ request()->routeIs('portal.trading-partner') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined ">
                 <path d="M12 16v5"/>
                 <path d="M16 14v7"/>
                 <path d="M20 10v11"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18v3"/><path d="M8 14v7"/></svg>
             <span class="uppercase ml-2 {{ request()->routeIs('portal.trading-partner') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Trading partner</span>
         </a>
-        <a href="#" class="{{ request()->routeIs('portal.dashboard') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center font-semibold p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+        <a href="{{ route('portal.dashboard') }}" class="{{ request()->routeIs('portal.dashboard') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid">
                 <defs>
                     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -74,7 +74,7 @@
                 <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
             <span class="uppercase ml-2 {{ request()->routeIs('portal.dashboard') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Dashboard</span>
         </a>
-        <a href="#" class="flex items-center text-[#0f277e] font-semibold p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+        <a href="{{ route('portal.packages') }}" class="{{ request()->routeIs('portal.packages') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center text-[#0f277e] p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-badge-2">
                 <defs>
                     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -83,7 +83,7 @@
                     </linearGradient>
                   </defs>
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><circle cx="12" cy="10" r="3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m14 12.5 1 5.5-3-1-3 1 1-5.5"/></svg>
-            <span class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Badges</span>
+            <span class="uppercase ml-2 {{ request()->routeIs('portal.packages') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Packages</span>
         </a>
         <a href="#" class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bitcoin">
@@ -94,7 +94,7 @@
                     </linearGradient>
                   </defs>
                 <path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></svg>
-            <span class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Packages</span>
+            <span class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Badge</span>
         </a>
         <a href="#" class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-banknote"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
@@ -120,9 +120,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gift"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>
             <span class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">referral bonus</span>
         </a>
-        <a href="#" class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+        <a href="{{ route('portal.transactions') }}" class="{{ request()->routeIs('portal.packages') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-left"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
-            <span class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">transactions</span>
+            <span class="uppercase ml-2 {{ request()->routeIs('portal.packages') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">transactions</span>
         </a>
         <a href="#" class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
