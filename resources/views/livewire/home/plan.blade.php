@@ -32,8 +32,7 @@
                                 along with learning.</div>
                         </div>
                     </div>
-                </div>
-    
+                </div>    
                 <div class="row ">
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="box" data-aos="fade-up" data-aos-duration="800"
@@ -97,7 +96,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-block">
-                            <form class="login-form" id="invest-form" action="" method="post">
+                            <form class="login-form" id="invest-form">
                                 <input type="hidden" name="_token" value="eyMmaUdfwFpo2o10Xuplh41oWJ6ToUfyF0KBr3Mo">
                                 <div class="signin">
                                     <h2 class="title golden-text text-center plan-name"></h2>
