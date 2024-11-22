@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Middleware\AdminAuthMiddleware;
+use App\Livewire\Admin\Admins;
+use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Deposits;
+use App\Livewire\Admin\Plans;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\PasswordReset;
 use App\Livewire\Auth\Register;
@@ -15,6 +20,7 @@ use App\Livewire\Portal\PayoutPreview;
 use App\Livewire\Portal\Profile;
 use App\Livewire\Portal\Transactions;
 use App\Livewire\Portal\TwoStepSecurity;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', Index::class)->name('home.index');
@@ -37,7 +43,19 @@ Route::middleware('auth')->as('portal.')->group(function () {
     Route::get('referrals', MyReferral::class)->name('referrals');
     Route::get('packages', Packages::class)->name('packages');
     Route::get('transactions', Transactions::class)->name('transactions');
+});
+
+Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function () {
+    Route::get('dashboard', AdminDashboard::class)->name('dashboard');
+    Route::get('deposits', Deposits::class)->name('deposits');
+    Route::get('admins', Admins::class)->name('admins');
+    Route::get('plans', Plans::class)->name('plans');
+});
 
 
-
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', function () {
+        Auth::logout();
+        return redirect()->route('login');
+    })->name('logout');
 });

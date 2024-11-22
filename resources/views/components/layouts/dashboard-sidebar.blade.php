@@ -15,26 +15,25 @@
             <div class="space-y-1">
                 <div class="flex items-center justify-between">
                   <span class="text-[#0f277e] text-sm">Deposit Wallet</span>
-                  <span class="text-[#0f277e] font-medium">$0</span>
+                  <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->deposit_balance }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="text-[#0f277e] text-sm">Old Main Balance</span>
-                  <span class="text-[#0f277e] font-medium">$0</span>
+                  <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->main_balance }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="text-[#0f277e] text-sm">EMR Wallet</span>
-                  <span class="text-[#0f277e] font-medium">$0</span>
+                  <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->emr_balance }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="text-[#0f277e] text-sm">EMR Share Wallet</span>
-                  <span class="text-[#0f277e] font-medium">$0</span>
+                  <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->emr_share_balance }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="text-[#0f277e] text-sm">Sales Bonus Wallet</span>
-                  <span class="text-[#0f277e] font-medium">$0</span>
+                  <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->sales_bonus_balance }}</span>
                 </div>
             </div>
-
               <div class="mt-5 w-full flex gap-2">
                 <a href="{{ route('portal.add-fund') }}" class="rounded-full text-white bg-[#0f277e] p-2 w-full flex justify-center items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">

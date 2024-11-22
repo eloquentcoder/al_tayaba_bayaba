@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -23,14 +24,20 @@ class Login extends Component
             'password' => $this->password,
         ];
 
-        // Attempt to login with the credentials
-        if (Auth::attempt($credentials)) {
-            // Redirect to the intended page after successful login
-            return redirect()->intended(route('portal.dashboard'));
+        if (!Auth::attempt($credentials)) {
+            $this->addError('email_username', 'Invalid email/username or password.');
+            return;
         }
 
-        // If authentication fails, show an error message
-        $this->addError('email_username', 'Invalid email/username or password.');
+        $user = User::where("email", $this->email_username)->orWhere('username', $this->email_username)->first();
+        Auth::login($user);
+
+        if ($user->user_type == 'admin') {
+           return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->intended(route('portal.dashboard'));
+            
     }
 
     public function render()

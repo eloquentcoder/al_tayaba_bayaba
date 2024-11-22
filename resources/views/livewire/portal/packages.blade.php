@@ -8,14 +8,16 @@
     </div>
 
     <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 mt-[50px]">
+
+        @foreach ($plans as $plan)
         <div class="rounded-md bg-white text-[#0f277e] p-5 text-center">
-            <h1 class="font-bold text-4xl">Platinum</h1>
-            <p class="mn-2 text-2xl">$100 - $50,000</p>
-            <div class="bg-[#0f277e] text-white rounded-md">8% - 10% every month</div>
+            <h1 class="font-bold text-4xl">{{ $plan->title }}</h1>
+            <p class="mn-2 text-2xl">${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}</p>
+            <div class="bg-[#0f277e] text-white rounded-md">{{ $plan->min_interest_rate }}% - {{ $plan->max_investment_rate }}% every month</div>
             <p class="text-[#0f277e] mt-3 text-xs">Profit For Every Day</p>
 
             <div class="my-2">
-                <span>Get 2x Appreciation </span>
+                <span>{{ $plan->description }}</span>
             </div>
 
             <a class="rounded-full text-white bg-[#0f277e] p-2 w-full flex justify-center items-center gap-1 mt-5">
@@ -23,22 +25,10 @@
             </a>
 
         </div>
+        @endforeach
 
-        <div class="rounded-md bg-white text-[#0f277e] p-5 text-center">
-            <h1 class="font-bold text-4xl">Diamond</h1>
-            <p class="mn-2 text-2xl">$100 - $50,000</p>
-            <div class="bg-[#0f277e] text-white rounded-md">8% - 10% every month</div>
-            <p class="text-[#0f277e] mt-3 text-xs">Profit For Every Day</p>
 
-            <div class="my-2">
-                <span>Get 1.5x Appreciation </span>
-            </div>
-
-            <a class="rounded-full text-white bg-[#0f277e] p-2 w-full flex justify-center items-center gap-1 mt-5">
-                <span>Purchase Now</span>
-            </a>
-
-        </div>
+       
 
     </div>
 

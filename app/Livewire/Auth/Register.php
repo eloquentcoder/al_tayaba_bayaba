@@ -42,6 +42,8 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
+        $user->balance()->create();
+
         // Log in the user automatically after registration
         Auth::login($user);
 
