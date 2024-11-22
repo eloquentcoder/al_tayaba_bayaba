@@ -89,11 +89,11 @@
                                     <select class="form-control" name="balance_type" wire:model="wallet">
                                         <option value="checkout" class="bg-dark text-white">Checkout</option>
                                         @if (auth()->check())
-                                        <option value="deposit_balance" class="bg-dark text-white">{{ Deposit Balance - auth()->user()->balance->deposit_balance }}</option>
-                                        <option value="main_balance" class="bg-dark text-white">{{ Main Balance - auth()->user()->balance->main_balance }}</option>
-                                        <option value="emr_balance" class="bg-dark text-white">{{ EMR Balance - auth()->user()->balance->emr_balance }}</option>
-                                        <option value="emr_share_balance" class="bg-dark text-white">{{ EMR Share Balance - auth()->user()->balance->emr_share_balance }}</option>
-                                        <option value="sales_bonus_balance" class="bg-dark text-white">{{ Sales Bonus Balance -  auth()->user()->balance->sales_bonus_balance }}</option>
+                                        <option value="deposit_balance" class="bg-dark text-white">Deposit Balance - {{  auth()->user()->balance->deposit_balance }}</option>
+                                        <option value="main_balance" class="bg-dark text-white">Main Balance -{{ auth()->user()->balance->main_balance }}</option>
+                                        <option value="emr_balance" class="bg-dark text-white">EMR Balance -{{ auth()->user()->balance->emr_balance }}</option>
+                                        <option value="emr_share_balance" class="bg-dark text-white">EMR Share Balance -{{ auth()->user()->balance->emr_share_balance }}</option>
+                                        <option value="sales_bonus_balance" class="bg-dark text-white"> Sales Bonus Balance -  {{ auth()->user()->balance->sales_bonus_balance }}</option>
                                         @endif
                                     </select>
                                 </div>
