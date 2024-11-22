@@ -5,6 +5,7 @@ use App\Livewire\Admin\Admins;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Deposits;
 use App\Livewire\Admin\Plans;
+use App\Livewire\Admin\SubscriptionRequest;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\PasswordReset;
 use App\Livewire\Auth\Register;
@@ -50,6 +51,7 @@ Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function (
     Route::get('deposits', Deposits::class)->name('deposits');
     Route::get('admins', Admins::class)->name('admins');
     Route::get('plans', Plans::class)->name('plans');
+    Route::get('subscription-requests', SubscriptionRequest::class)->name('plans');
 });
 
 

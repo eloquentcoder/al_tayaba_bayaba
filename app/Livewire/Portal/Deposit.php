@@ -14,12 +14,27 @@ class Deposit extends Component
     public $amount;
     public $payment_proof;
 
+    public $currentModal = 1;
+    public $isModalOpen = false;
+
+    public function setModal($currentPage)
+    {
+        $this->currentModal = $currentPage;
+    }
+
+    public function toggleModal()
+    {
+        $this->isModalOpen = !$this->isModalOpen;
+    }
+
     public function submitDeposit()
     {
         $this->validate([
             'amount' => 'required|numeric|min:100',
             'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', // Customize rules as needed
         ]);
+
+        
 
         // Handle the file upload
         $proofPath = $this->payment_proof->store('payment_proofs', 'public');
@@ -32,7 +47,8 @@ class Deposit extends Component
             'user_id' => auth()->id()
         ]);
 
-        session()->flash('success', 'Deposit request submitted successfully!');
+        $this->isModalOpen = false;
+        session()->flash('success', 'Deposit request submitted successfully! An admin will look at your payments to verify');
     }
 
     #[Layout('components.layouts.dashboard')] 

@@ -9,4 +9,17 @@ class Subscription extends Model
 {
     /** @use HasFactory<\Database\Factories\SubscriptionFactory> */
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
 }
