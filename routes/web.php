@@ -51,7 +51,7 @@ Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function (
     Route::get('deposits', Deposits::class)->name('deposits');
     Route::get('admins', Admins::class)->name('admins');
     Route::get('plans', Plans::class)->name('plans');
-    Route::get('subscription-requests', SubscriptionRequest::class)->name('plans');
+    Route::get('subscription-requests', SubscriptionRequest::class)->name('subscription-requests');
 });
 
 

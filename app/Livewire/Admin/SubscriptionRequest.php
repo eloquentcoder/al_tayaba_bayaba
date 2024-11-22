@@ -40,7 +40,7 @@ class SubscriptionRequest extends Component
         ]);
 
         $user = User::find($this->selectedSubscription->user_id);
-       
+        $user->balance()->increment('main_balance', $this->selectedSubscription->amount);
 
         session()->flash('success', 'Subscription request confirmed successfully!');
         $this->selectedSubscription = null;

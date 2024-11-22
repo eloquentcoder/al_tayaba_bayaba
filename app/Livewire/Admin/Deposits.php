@@ -49,9 +49,7 @@ class Deposits extends Component
         ]);
 
         $user = User::find($this->selectedDeposit->user_id);
-        $user->balance()->update([
-            'deposit_balance' => $this->selectedDeposit->amount
-        ]);
+        $user->balance()->increment('deposit_balance', $this->selectedDeposit->amount);
 
         session()->flash('success', 'Deposit request confirmed successfully!');
         $this->selectedDeposit = null;

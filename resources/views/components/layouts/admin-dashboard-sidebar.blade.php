@@ -77,6 +77,24 @@
             <span
                 class="uppercase ml-2 {{ request()->routeIs('admin.deposits') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Deposits</span>
         </a>
+        <a href="{{ route('admin.subscription-requests') }}" class="{{ request()->routeIs('admin.subscription-requests') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center text-[#0f277e] p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="lucide lucide-file-badge-2">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0f277e;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(255, 255, 255);stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                <circle cx="12" cy="10" r="3" />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                <path d="m14 12.5 1 5.5-3-1-3 1 1-5.5" />
+            </svg>
+            <span
+                class="uppercase ml-2 {{ request()->routeIs('admin.subscription-requests') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Subscription Requests</span>
+        </a>
         <!-- Add other menu items here following the same structure -->
     </nav>
 </aside>

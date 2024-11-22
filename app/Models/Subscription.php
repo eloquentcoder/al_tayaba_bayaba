@@ -12,6 +12,11 @@ class Subscription extends Model
 
     protected $guarded = [];
 
+    public function getPaymentProofUrlAttribute()
+    {
+        return asset('storage/' . $this->payment_proof);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
