@@ -20,42 +20,103 @@ class Packages extends Component
     public $amount;
     public $payment_proof;
 
-    protected $messages = [
-        'payment_proof.file' => 'The payment proof must be a valid file.',
-        'payment_proof.mimes' => 'The payment proof must be a JPG, JPEG, PNG, or PDF file.',
-        'payment_proof.max' => 'The payment proof must not be larger than 2MB.',
-    ];
+    public $uploadError = '';
 
     public function updatedPaymentProof()
     {
         try {
+            if (!$this->payment_proof) {
+                $this->uploadError = 'No file was uploaded';
+                return;
+            }
+
+            // Check file upload errors
+            if ($this->payment_proof->getError() !== UPLOAD_ERR_OK) {
+                $errors = [
+                    UPLOAD_ERR_INI_SIZE => 'The file exceeds upload_max_filesize',
+                    UPLOAD_ERR_FORM_SIZE => 'The file exceeds MAX_FILE_SIZE',
+                    UPLOAD_ERR_PARTIAL => 'The file was only partially uploaded',
+                    UPLOAD_ERR_NO_FILE => 'No file was uploaded',
+                    UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder',
+                    UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk',
+                    UPLOAD_ERR_EXTENSION => 'A PHP extension stopped the file upload'
+                ];
+
+                $errorCode = $this->payment_proof->getError();
+                $this->uploadError = $errors[$errorCode] ?? 'Unknown upload error';
+
+                Log::error('File upload error:', [
+                    'error_code' => $errorCode,
+                    'error_message' => $this->uploadError
+                ]);
+
+                return;
+            }
+
+            // Validate file
             $this->validate([
                 'payment_proof' => 'file|mimes:jpg,jpeg,png,pdf|max:2048',
             ]);
-            
-            // If validation passes, you could optionally:
-            // 1. Show a success message
-            session()->flash('upload_status', 'File validated successfully!');
-            
-            // 2. Get file information
-            if ($this->payment_proof) {
-                $fileSize = round($this->payment_proof->getSize() / 1024, 2); // Size in KB
-                $fileType = $this->payment_proof->getMimeType();
-                
-                Log::info('File validated:', [
-                    'name' => $this->payment_proof->getClientOriginalName(),
-                    'size' => $fileSize . 'KB',
-                    'type' => $fileType
-                ]);
-            }
-            
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            // If validation fails:
-            // 1. The error will automatically be shown in the view
-            // 2. You could log the error
-            Log::error('File validation failed:', [
-                'errors' => $e->errors()
+
+            Log::info('File validation passed:', [
+                'name' => $this->payment_proof->getClientOriginalName(),
+                'size' => $this->payment_proof->getSize(),
+                'mime' => $this->payment_proof->getMimeType()
             ]);
+        } catch (\Exception $e) {
+            Log::error('File upload exception:', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            $this->uploadError = 'An error occurred while processing the file: ' . $e->getMessage();
+        }
+    }
+
+    public function submitPackagePurchase()
+    {
+        try {
+            Log::info('Starting package purchase submission');
+
+            if (!$this->payment_proof) {
+                throw new \Exception('No file attached');
+            }
+
+            $this->validate([
+                'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}",
+                'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            ]);
+
+            // Try to store the file
+            try {
+                $proofPath = $this->payment_proof->store('payment_proofs', 'public');
+                Log::info('File stored successfully at: ' . $proofPath);
+            } catch (\Exception $e) {
+                Log::error('File storage failed:', [
+                    'error' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString()
+                ]);
+                throw new \Exception('Failed to store file: ' . $e->getMessage());
+            }
+
+            // Create subscription
+            $subscription = Subscription::create([
+                'amount' => $this->amount,
+                'payment_proof' => $proofPath,
+                'user_id' => auth()->id(),
+                'plan_id' => $this->selectedPlan->id
+            ]);
+
+            $this->isModalOpen = false;
+            session()->flash('success', 'Purchase request submitted successfully!');
+            $this->reset(['amount', 'payment_proof', 'uploadError']);
+        } catch (\Exception $e) {
+            Log::error('Package purchase failed:', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            session()->flash('error', 'Failed to submit purchase: ' . $e->getMessage());
         }
     }
 
@@ -75,44 +136,7 @@ class Packages extends Component
         $this->isModalOpen = !$this->isModalOpen;
     }
 
-    public function submitPackagePurchase()
-    {
 
-        Log::info($this->amount);
-        Log::info($this->payment_proof);
-        
-
-        $this->validate([
-            'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}",
-            'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', 
-        ]);
-
-        if ($this->amount < $this->selectedPlan->min_investment_amount) {
-            $this->isModalOpen = false;
-            session()->flash('error', 'the amount you entered is too low');
-            return;
-        }
-
-        if ($this->amount > $this->selectedPlan->max_investment_amount) {
-            $this->isModalOpen = false;
-            session()->flash('error', 'the amount you entered is too high');
-            return;
-        }
-
-        // Handle the file upload
-        $proofPath = $this->payment_proof->store('payment_proofs', 'public');
-
-        $subscription = Subscription::create([
-            'amount' => $this->amount,
-            'payment_proof' => $proofPath,
-            'user_id' => auth()->id(),
-            'plan_id' => $this->selectedPlan->id
-        ]);
-
-        $this->isModalOpen = false;
-        session()->flash('success', 'Purchase request submitted successfully! An admin will look at your payments to verify');
-        $this->reset(['amount', 'payment_proof']);
-    }
 
     #[Layout('components.layouts.dashboard')]
     public function render()

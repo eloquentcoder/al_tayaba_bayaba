@@ -201,6 +201,9 @@
                             @if (session()->has('upload_status'))
                                 <span class="text-green-500 text-sm">{{ session('upload_status') }}</span>
                             @endif
+                            @if ($uploadError)
+                                <span class="text-red-500 text-sm">{{ $uploadError }}</span>
+                            @endif
                         </div>
                     </div>
                     <button type="submit"
