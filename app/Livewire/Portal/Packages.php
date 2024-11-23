@@ -4,6 +4,7 @@ namespace App\Livewire\Portal;
 
 use App\Models\Plan;
 use App\Models\Subscription;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -37,9 +38,14 @@ class Packages extends Component
 
     public function submitPackagePurchase()
     {
+
+        Log::info($this->amount);
+        Log::info($this->payment_proof);
+        
+
         $this->validate([
             'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}",
-            'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', // Customize rules as needed
+            'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', 
         ]);
 
         if ($this->amount < $this->selectedPlan->min_investment_amount) {
@@ -66,6 +72,7 @@ class Packages extends Component
 
         $this->isModalOpen = false;
         session()->flash('success', 'Purchase request submitted successfully! An admin will look at your payments to verify');
+        $this->reset(['amount', 'payment_proof']);
     }
 
     #[Layout('components.layouts.dashboard')]
