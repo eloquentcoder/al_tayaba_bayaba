@@ -15,7 +15,7 @@
     <div class="mt-10 text-center w-1/3 mx-auto">
         <h5 class="text-xl">JOIN NOW</h5>
         <h3 class="text-5xl">Educational Packages</h3>
-        <p>We offer three different types of educational packages, which allows you earning along with learning. We are
+        <p>We offer different types of educational packages, which allows you earning along with learning. We are
             offering online classes as well as physical classes around the Globe.</p>
     </div>
 
@@ -180,30 +180,37 @@
                 <div>
                     <h2 class="text-lg font-bold">Please follow the instructions below</h2>
                     <p class="text-xs">You have requested to deposit {{ $amount }} USD. Please pay
-                        {{ $amount * 278 }} PKR for successful
-                        payment</p>
+                        {{ $amount * 278 }} PKR for successful payment</p>
                 </div>
                 <button wire:click="toggleModal" class="text-yellow-400 hover:text-yellow-600">
                     &times;
                 </button>
             </div>
-            <div>
-                <p class="text-center text-sm mb-4 bg-[#0f277e] text-white rounded-md">PK05FAY394303439493439439</p>
+            <form wire:submit.prevent="submitPackagePurchase" enctype="multipart/form-data">
                 <div>
-                    <h1 class="text-sm">Please check dollar rate according to google rate</h1>
-                    <div class="my-3 flex flex-col">
-                        <label id="payment_proof">Payment Proof</label>
-                        <input type="file" wire:model="payment_proof" id="payment_proof">
+                    <p class="text-center text-sm mb-4 bg-[#0f277e] text-white rounded-md">PK05FAY394303439493439439
+                    </p>
+                    <div>
+                        <h1 class="text-sm">Please check dollar rate according to google rate</h1>
+                        <div class="my-3 flex flex-col">
+                            <label for="payment_proof">Payment Proof</label>
+                            <input type="file" wire:model="payment_proof" id="payment_proof">
+                            @error('payment_proof')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                            @if (session()->has('upload_status'))
+                                <span class="text-green-500 text-sm">{{ session('upload_status') }}</span>
+                            @endif
+                        </div>
                     </div>
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 text-white font-bold py-2 px-4 rounded-full hover:from-blue-500 hover:to-blue-700">
+                        Deposit
+                    </button>
                 </div>
-                <button wire:click="submitPackagePurchase"
-                    class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 text-white font-bold py-2 px-4 rounded-full hover:from-blue-500 hover:to-blue-700">
-                    Deposit
-                </button>
-            </div>
+            </form>
         </div>
     </div>
-
 
 
 </div>

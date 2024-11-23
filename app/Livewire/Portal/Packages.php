@@ -20,6 +20,45 @@ class Packages extends Component
     public $amount;
     public $payment_proof;
 
+    protected $messages = [
+        'payment_proof.file' => 'The payment proof must be a valid file.',
+        'payment_proof.mimes' => 'The payment proof must be a JPG, JPEG, PNG, or PDF file.',
+        'payment_proof.max' => 'The payment proof must not be larger than 2MB.',
+    ];
+
+    public function updatedPaymentProof()
+    {
+        try {
+            $this->validate([
+                'payment_proof' => 'file|mimes:jpg,jpeg,png,pdf|max:2048',
+            ]);
+            
+            // If validation passes, you could optionally:
+            // 1. Show a success message
+            session()->flash('upload_status', 'File validated successfully!');
+            
+            // 2. Get file information
+            if ($this->payment_proof) {
+                $fileSize = round($this->payment_proof->getSize() / 1024, 2); // Size in KB
+                $fileType = $this->payment_proof->getMimeType();
+                
+                Log::info('File validated:', [
+                    'name' => $this->payment_proof->getClientOriginalName(),
+                    'size' => $fileSize . 'KB',
+                    'type' => $fileType
+                ]);
+            }
+            
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // If validation fails:
+            // 1. The error will automatically be shown in the view
+            // 2. You could log the error
+            Log::error('File validation failed:', [
+                'errors' => $e->errors()
+            ]);
+        }
+    }
+
     public function selectPlan(Plan $plan)
     {
         $this->selectedPlan = $plan;
