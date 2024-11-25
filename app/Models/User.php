@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,6 +45,20 @@ class User extends Authenticatable
         ];
     }
 
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->first_name . " " . $this->last_name
+        );
+    }
+
+    public function referralLink(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => config('app.url') . "/register?ref=" . $this->username
+        );
+    }
+
     public function admin()
     {
         return $this->hasOne(Admin::class);
@@ -53,6 +69,14 @@ class User extends Authenticatable
         return $this->hasOne(Balance::class);
     }
 
-    
+    public function referrals()
+    {
+        return $this->hasMany(User::class, 'parent_id');
+    }
+
+    public function referrer()
+    {
+        return $this->belongsTo(User::class, 'parent_id');
+    }
 
 }
