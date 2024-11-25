@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Actions\UpdateReferrerBalance;
 use App\Models\Subscription;
 use App\Models\User;
 use Livewire\Attributes\Layout;
@@ -40,7 +41,9 @@ class SubscriptionRequest extends Component
         ]);
 
         $user = User::find($this->selectedSubscription->user_id);
-        $user->balance()->increment('main_balance', $this->selectedSubscription->amount);
+        $user->balance()->increment('emr_balance', $this->selectedSubscription->amount);
+
+        (new UpdateReferrerBalance())->updateBalance($user->id, $this->selectedSubscription->amount);
 
         session()->flash('success', 'Subscription request confirmed successfully!');
         $this->selectedSubscription = null;
