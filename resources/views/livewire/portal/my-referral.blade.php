@@ -112,12 +112,12 @@
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 @foreach ($level_3_referrals as $referral)
-                                <tr class="border-b border-gray-700">
-                                    <td class="px-4 py-2">{{ $referral->username }}</td>
-                                    <td class="px-4 py-2">{{ $referral->email }}</td>
-                                    <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
-                                </tr>
-                            @endforeach
+                                    <tr class="border-b border-gray-700">
+                                        <td class="px-4 py-2">{{ $referral->username }}</td>
+                                        <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -138,12 +138,12 @@
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_4_referrals as $referral)
-                                <tr class="border-b border-gray-700">
-                                    <td class="px-4 py-2">{{ $referral->username }}</td>
-                                    <td class="px-4 py-2">{{ $referral->email }}</td>
-                                    <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
-                                </tr>
-                            @endforeach
+                                    <tr class="border-b border-gray-700">
+                                        <td class="px-4 py-2">{{ $referral->username }}</td>
+                                        <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -159,12 +159,34 @@
     document.getElementById('copyButton').addEventListener('click', function() {
         // Get the referral link text
         const referralLink = document.getElementById('link').innerText;
+        // alert('Referral link copied to clipboard!');
 
-        // Copy to clipboard
-        navigator.clipboard.writeText(referralLink).then(() => {
-            alert('Referral link copied to clipboard!');
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(referralLink)
+                .then(() => {
+                    alert('Referral link copied to clipboard!');
+                    console.log('Copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Error copying text: ', err);
+                });
+        } else {
+            // Fallback for unsupported browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = referralLink;
+            textArea.style.position = 'fixed'; // Avoid scrolling to the bottom
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert('Referral link copied to clipboard!');
+                console.log('Copied to clipboard with fallback!');
+            } catch (err) {
+                console.error('Fallback: Could not copy text: ', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
     });
 </script>

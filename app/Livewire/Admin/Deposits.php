@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Actions\UpdateReferrerBalance;
 use App\Models\DepositRequest;
 use App\Models\User;
 use Livewire\Attributes\Layout;
@@ -50,6 +51,8 @@ class Deposits extends Component
 
         $user = User::find($this->selectedDeposit->user_id);
         $user->balance()->increment('deposit_balance', $this->selectedDeposit->amount);
+
+        (new UpdateReferrerBalance())->updateBalance($user->id, $this->selectedDeposit->amount);
 
         session()->flash('success', 'Deposit request confirmed successfully!');
         $this->selectedDeposit = null;
