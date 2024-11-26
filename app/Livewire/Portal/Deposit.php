@@ -3,6 +3,7 @@
 namespace App\Livewire\Portal;
 
 use App\Models\DepositRequest;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -44,7 +45,8 @@ class Deposit extends Component
             'amount' => $this->amount,
             'payment_proof' => $proofPath,
             'status' => 'pending',
-            'user_id' => auth()->id()
+            'unique_id' => uniqid(),
+            'user_id' => Auth::id()
         ]);
 
         $this->isModalOpen = false;
