@@ -9,6 +9,7 @@ use App\Livewire\Admin\SubscriptionRequest;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\PasswordReset;
 use App\Livewire\Auth\Register;
+use App\Livewire\Auth\TwoFAVerify;
 use App\Livewire\Home\About;
 use App\Livewire\Home\Index;
 use App\Livewire\Home\Plan;
@@ -31,23 +32,24 @@ Route::get('about', About::class)->name('home.about');
 
 Route::get('login', Login::class)->name('login');
 Route::get('register', Register::class)->name('register');
+Route::get('2fa/verify', TwoFAVerify::class)->name('2fa.verify');
 Route::get('password-reset', PasswordReset::class)->name('password-reset');
 
-Route::middleware('auth')->as('portal.')->group(function () {
-    Route::get('dashboard', Dashboard::class)->name('dashboard');
-    Route::get('profile', Profile::class)->name('profile');
+Route::middleware(['auth'])->as('portal.')->group(function () {
+    Route::middleware('2fa')->group(function () {
+        Route::get('dashboard', Dashboard::class)->name('dashboard');
+        Route::get('profile', Profile::class)->name('profile');
+        Route::get('add-fund', Deposit::class)->name('add-fund');
+        
+        Route::get('payout', Payout::class)->name('payout');
+        Route::get('payout/preview', PayoutPreview::class)->name('payout-preview');
+        
+        Route::get('referrals', MyReferral::class)->name('referrals');
+        Route::get('packages', Packages::class)->name('packages');
+        Route::get('transactions', Transactions::class)->name('transactions');
+        Route::get('deposit-history', DepositHistory::class)->name('deposit-history');
+    });
     Route::get('twostep-security', TwoStepSecurity::class)->name('twostep-security');
-    Route::get('add-fund', Deposit::class)->name('add-fund');
-
-    Route::get('payout', Payout::class)->name('payout');
-    Route::get('payout/preview', PayoutPreview::class)->name('payout-preview');
-
-    Route::get('referrals', MyReferral::class)->name('referrals');
-    Route::get('packages', Packages::class)->name('packages');
-    Route::get('transactions', Transactions::class)->name('transactions');
-
-    Route::get('deposit-history', DepositHistory::class)->name('deposit-history');
-
 
 });
 

@@ -1,6 +1,4 @@
-<div class="p-5">
-    <h1 class="text-5xl">Deposit Money</h1>
-
+nn
     @if (session()->has('success'))
         <div class="bg-green-500 text-white p-4 rounded-md">
             {{ session('success') }}

@@ -13,7 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'auth_admin' => AdminAuthMiddleware::class
+            'auth_admin' => AdminAuthMiddleware::class,
+            '2fa' => \App\Http\Middleware\TwoFactorMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

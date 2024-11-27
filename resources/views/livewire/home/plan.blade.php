@@ -42,15 +42,17 @@
                             <!-- <h4 class="golden-text">Monthly Rental Plan</h4> -->
                             <h3>${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}</h3>
                             <div class="bg">
-                                <span class="golden-text">{{ $plan->min_interest_rate }}% - {{ $plan->max_interest_rate }}% <small class="small-font">Every Month</small></span>
+                                <span class="golden-text">{{ $plan->min_interest_rate }}% -
+                                    {{ $plan->max_interest_rate }}% <small class="small-font">Every Month</small></span>
                             </div>
 
                             <h4 class="golden-text">{{ $plan->description }}</h4>
                             <!-- <h4>Any Hidden Charges :
                                 <small><span class="badge-small badge bg-danger">No</span></small></h4> -->
                             <!-- <h4>  <span class="golden-text">Total 125 % + </span>   </h4> -->
-                            <button class="gold-btn btn investNow" type="button" data-price="${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}"
-                                data-resource="{&quot;id&quot;:11,&quot;name&quot;:&quot;{{$plan->title}}&quot;,&quot;badge&quot;:&quot;Premium&quot;,&quot;minimum_amount&quot;:&quot;{{ $plan->min_investment_amount }}&quot;,&quot;maximum_amount&quot;:&quot;{{ $plan->max_investment_amount }}&quot;,&quot;fixed_amount&quot;:&quot;0&quot;,&quot;profit&quot;:&quot;{{ $plan->min_interest_rate }}&quot;,&quot;profit_type&quot;:1,&quot;schedule&quot;:24,&quot;status&quot;:1,&quot;is_capital_back&quot;:0,&quot;is_lifetime&quot;:0,&quot;repeatable&quot;:655,&quot;featured&quot;:1,&quot;created_at&quot;:&quot;2024-06-29T23:28:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2024-08-24T12:41:13.000000Z&quot;,&quot;price&quot;:&quot;$100 - $50000&quot;}">Purchase
+                            <button class="gold-btn btn investNow" type="button"
+                                data-price="${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}"
+                                data-resource="{&quot;id&quot;:11,&quot;name&quot;:&quot;{{ $plan->title }}&quot;,&quot;badge&quot;:&quot;Premium&quot;,&quot;minimum_amount&quot;:&quot;{{ $plan->min_investment_amount }}&quot;,&quot;maximum_amount&quot;:&quot;{{ $plan->max_investment_amount }}&quot;,&quot;fixed_amount&quot;:&quot;0&quot;,&quot;profit&quot;:&quot;{{ $plan->min_interest_rate }}&quot;,&quot;profit_type&quot;:1,&quot;schedule&quot;:24,&quot;status&quot;:1,&quot;is_capital_back&quot;:0,&quot;is_lifetime&quot;:0,&quot;repeatable&quot;:655,&quot;featured&quot;:1,&quot;created_at&quot;:&quot;2024-06-29T23:28:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2024-08-24T12:41:13.000000Z&quot;,&quot;price&quot;:&quot;$100 - $50000&quot;}">Purchase
                                 Now </button>
                         </div>
                     </div>
@@ -89,11 +91,16 @@
                                     <select class="form-control" name="balance_type" wire:model="wallet">
                                         <option value="checkout" class="bg-dark text-white">Checkout</option>
                                         @if (auth()->check())
-                                        <option value="deposit_balance" class="bg-dark text-white">Deposit Balance - {{  auth()->user()->balance->deposit_balance }}</option>
-                                        <option value="main_balance" class="bg-dark text-white">Main Balance -{{ auth()->user()->balance->main_balance }}</option>
-                                        <option value="emr_balance" class="bg-dark text-white">EMR Balance -{{ auth()->user()->balance->emr_balance }}</option>
-                                        <option value="emr_share_balance" class="bg-dark text-white">EMR Share Balance -{{ auth()->user()->balance->emr_share_balance }}</option>
-                                        <option value="sales_bonus_balance" class="bg-dark text-white"> Sales Bonus Balance -  {{ auth()->user()->balance->sales_bonus_balance }}</option>
+                                            <option value="deposit_balance" class="bg-dark text-white">Deposit Balance -
+                                                {{ auth()->user()->balance->deposit_balance }}</option>
+                                            <option value="main_balance" class="bg-dark text-white">Main Balance
+                                                -{{ auth()->user()->balance->main_balance }}</option>
+                                            <option value="emr_balance" class="bg-dark text-white">EMR Balance
+                                                -{{ auth()->user()->balance->emr_balance }}</option>
+                                            <option value="emr_share_balance" class="bg-dark text-white">EMR Share
+                                                Balance -{{ auth()->user()->balance->emr_share_balance }}</option>
+                                            <option value="sales_bonus_balance" class="bg-dark text-white"> Sales Bonus
+                                                Balance - {{ auth()->user()->balance->sales_bonus_balance }}</option>
                                         @endif
                                     </select>
                                 </div>

@@ -32,10 +32,7 @@ class Plan extends Component
             'wallet' => 'required',
             'amount' => 'required'
         ]);
-
-        dd($this->selectedPlan);
-        
-
+    
     }
 
     public function render()
