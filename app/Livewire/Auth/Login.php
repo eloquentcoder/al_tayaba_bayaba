@@ -15,13 +15,14 @@ class Login extends Component
     {
         $this->validate([
             'email_username' => 'required',
-            'password' => 'required',
+            'password' => 'required'
         ]);
 
         // Attempt to find the user by email or username
         $credentials = [
             filter_var($this->email_username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username' => $this->email_username,
             'password' => $this->password,
+             'user_type' => 'user'
         ];
 
         if (!Auth::attempt($credentials)) {
@@ -32,21 +33,16 @@ class Login extends Component
         $user = User::where("email", $this->email_username)->orWhere('username', $this->email_username)->first();
         Auth::login($user);
 
-        if ($user->user_type == 'admin') {
-           return redirect()->route('admin.dashboard');
-        }
-
         if ($user->two_factor_enabled) {
             Auth::logout();
-    
+
             // Store user ID in session for 2FA validation
             session()->put('user_2fa_id', $user->id);
-    
+
             return redirect()->route('2fa.verify');
         }
 
         return redirect()->intended(route('portal.dashboard'));
-            
     }
 
     public function render()

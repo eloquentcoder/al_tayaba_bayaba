@@ -4,6 +4,7 @@ use App\Http\Middleware\AdminAuthMiddleware;
 use App\Livewire\Admin\Admins;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Deposits;
+use App\Livewire\Admin\Login as AdminLogin;
 use App\Livewire\Admin\Plans;
 use App\Livewire\Admin\SubscriptionRequest;
 use App\Livewire\Auth\Login;
@@ -30,10 +31,13 @@ Route::get('', Index::class)->name('home.index');
 Route::get('plan', Plan::class)->name('home.plan');
 Route::get('about', About::class)->name('home.about');
 
+Route::get('admin/login', AdminLogin::class)->name('admin.login');
 Route::get('login', Login::class)->name('login');
 Route::get('register', Register::class)->name('register');
 Route::get('2fa/verify', TwoFAVerify::class)->name('2fa.verify');
 Route::get('password-reset', PasswordReset::class)->name('password-reset');
+
+
 
 Route::middleware(['auth'])->as('portal.')->group(function () {
     Route::middleware('2fa')->group(function () {
