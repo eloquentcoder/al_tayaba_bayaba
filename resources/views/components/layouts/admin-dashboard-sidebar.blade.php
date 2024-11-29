@@ -1,4 +1,4 @@
-<aside class="w-64 bg-[#ffffff] space-y-6 overflow-auto h-screen">
+<aside id="sidebar" class="hidden fixed inset-y-0 left-0 w-64 bg-[#ffffff] space-y-6 overflow-auto h-screen lg:block">
     <div class="flex justify-center text-center border-b border-b-black p-3">
         <img src={{ asset('logo.png') }} className="h-[55px]" style="height: 55px" alt="Logo" srcset="">
     </div>

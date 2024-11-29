@@ -17,10 +17,9 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-4 gap-4 mt-10" x-data="{ activeTab: 'level1' }">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-10" x-data="{ activeTab: 'level1' }">
 
         <div class="flex flex-col">
-
             <button x-on:click="activeTab = 'level1'" :class="{ 'bg-[#0f277e]': activeTab === 'level1' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 1</span>
@@ -49,7 +48,7 @@
         <div class=" text-gray-200 col-span-3">
             <div x-show="activeTab === 'level1'">
                 <div class="bg-white flex items-center justify-center">
-                    <div class="w-full max-w-4xl bg-white text-black shadow-md overflow-hidden">
+                    <div class="w-full max-w-4xl bg-white text-black shadow-md overflow-auto">
                         <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-[#0f277e] text-white">

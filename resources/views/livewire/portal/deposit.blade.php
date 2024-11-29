@@ -1,4 +1,4 @@
-<div>
+<div class="p-5">
     @if (session()->has('success'))
         <div class="bg-green-500 text-white p-4 rounded-md">
             {{ session('success') }}

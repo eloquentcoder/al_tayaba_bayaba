@@ -11,7 +11,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Profile Image Section -->
             <div class="bg-white/50 rounded-xl shadow-lg p-6 text-center">
-                <div class="relative mb-4">
+                <div class=" mb-4">
                     <img src="https://placehold.co/300x300/e2e8f0/blue?text=Profile" alt="Profile Image"
                         class="mx-auto rounded-xl object-cover mb-4">
                     <h2 class="text-[#0f277e] text-2xl font-bold mb-2">{{ auth()->user()->username }}</h2>

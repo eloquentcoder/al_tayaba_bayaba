@@ -64,6 +64,15 @@
           });
       });
   </script>
+
+<script>
+  const menuButton = document.getElementById('menuDropdownButton');
+  const sidebar = document.getElementById('sidebar');
+
+  menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden'); // Toggle the 'hidden' class
+  });
+</script>
   
 </body>
 </html>

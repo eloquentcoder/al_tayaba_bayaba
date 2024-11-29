@@ -58,7 +58,7 @@
                             <span class="text-neutral-400">QR Code Placeholder</span>
                         </div>
                     @endif
-                    <p class="text-neutral-400 text-sm text-center">
+                    <p class="text-white text-sm text-center">
                         Google Authenticator is a multifactor app for mobile devices. It generates timed codes used
                         during the 2-step verification process. To use Google Authenticator, install the Google
                         Authenticator application on your mobile device.

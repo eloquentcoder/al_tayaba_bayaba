@@ -1,4 +1,4 @@
-<div class="m-10">
+<div class="m-3 md:m-10">
 
     @if (session()->has('success'))
         <div class="bg-green-500 text-white p-4 rounded-md">
