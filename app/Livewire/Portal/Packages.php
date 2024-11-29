@@ -4,6 +4,7 @@ namespace App\Livewire\Portal;
 
 use App\Models\Plan;
 use App\Models\Subscription;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -103,12 +104,12 @@ class Packages extends Component
             $subscription = Subscription::create([
                 'amount' => $this->amount,
                 'payment_proof' => $proofPath,
-                'user_id' => auth()->id(),
+                'user_id' => Auth::id(),
                 'plan_id' => $this->selectedPlan->id
             ]);
 
             $this->isModalOpen = false;
-            session()->flash('success', 'Purchase request submitted successfully!');
+            session()->flash('success', 'Purchase request submitted successfully! An admin will look at your request');
             $this->reset(['amount', 'payment_proof', 'uploadError']);
         } catch (\Exception $e) {
             Log::error('Package purchase failed:', [

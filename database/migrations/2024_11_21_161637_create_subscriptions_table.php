@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Plan::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->float('amount');
-            $table->enum('status', ['active', 'pending', 'cancelled', 'matured'])->default('pending');
+            $table->enum('status', ['active', 'pending','approved_by_subadmin' ,'cancelled', 'matured'])->default('pending');
             $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });

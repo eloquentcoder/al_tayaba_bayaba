@@ -6,6 +6,7 @@ use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Deposits;
 use App\Livewire\Admin\Login as AdminLogin;
 use App\Livewire\Admin\Plans;
+use App\Livewire\Admin\Profile as AdminProfile;
 use App\Livewire\Admin\SubscriptionRequest;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\PasswordReset;
@@ -59,6 +60,7 @@ Route::middleware(['auth'])->as('portal.')->group(function () {
 
 Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function () {
     Route::get('dashboard', AdminDashboard::class)->name('dashboard');
+    Route::get('profile', AdminProfile::class)->name('profile');
     Route::get('deposits', Deposits::class)->name('deposits');
     Route::get('admins', Admins::class)->name('admins');
     Route::get('plans', Plans::class)->name('plans');

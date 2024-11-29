@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->float('amount');
-            $table->enum('status', ['pending', 'completed', 'cancelled']);
+            $table->enum('status', ['pending','approved_by_subadmin' ,'completed', 'cancelled']);
             $table->string('cancellation_reason')->nullable();
             $table->timestamps();
         });

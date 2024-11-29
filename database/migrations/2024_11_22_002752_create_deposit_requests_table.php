@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('amount');
             $table->foreignIdFor(User::class)->constrained();
-            $table->enum('status', ['pending', 'approved', 'rejected', 'blacklisted']);
+            $table->enum('status', ['pending','approved_by_subadmin' ,'approved', 'rejected', 'blacklisted']);
             $table->timestamps();
         });
     }

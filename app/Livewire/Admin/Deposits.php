@@ -5,6 +5,7 @@ namespace App\Livewire\Admin;
 use App\Actions\UpdateReferrerBalance;
 use App\Models\DepositRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -45,6 +46,16 @@ class Deposits extends Component
 
     public function acceptDeposit()
     {
+
+        if (!Auth::user()->admin->is_super_admin) {
+            $this->selectedDeposit->update([
+                'status' => 'approved_by_subadmin'
+            ]);
+
+            session()->flash('success', 'Deposit request appeoved by sub admin successfully!');
+            return;
+        }
+
         $this->selectedDeposit->update([
             'status' => 'approved'
         ]);
@@ -63,7 +74,7 @@ class Deposits extends Component
     public function render()
     {
         return view('livewire.admin.deposits', [
-            'deposits' => DepositRequest::latest()->paginate(15)
+            'deposits' => Auth::user()->admin->is_super_admin ? DepositRequest::latest()->paginate(15): DepositRequest::where('status', 'pending')->latest()->paginate(15)
         ]);
     }
 }

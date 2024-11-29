@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Livewire\Portal;
+namespace App\Livewire\Admin;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
-
 
 class Profile extends Component
 {
@@ -20,7 +19,6 @@ class Profile extends Component
 
     public $password;
     public $password_confirmation;
-
 
     public function mount()
     {
@@ -41,10 +39,6 @@ class Profile extends Component
                 'email',
                 Rule::unique('users')->ignore(Auth::id()),
             ],
-            'phone_number' => [
-                'required',
-                Rule::unique('users')->ignore(Auth::id()),
-            ],
             'username' => [
                 'required',
                 Rule::unique('users')->ignore(Auth::id()),
@@ -56,12 +50,10 @@ class Profile extends Component
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'phone_number' => $this->phone_number,
             'username' => $this->username,
         ]);
 
-        session()->flash('success', 'User profile updated successfully');
-
+        session()->flash('success', 'Profile updated successfully');
     }
 
     public function updatePassword()
@@ -76,14 +68,13 @@ class Profile extends Component
             'password' => bcrypt($this->password)
         ]);
 
-        session()->flash('success', 'User password updated successfully');
-
+        session()->flash('success', 'Password updated successfully');
     }
 
 
-    #[Layout('components.layouts.dashboard')]
+    #[Layout('components.layouts.admin-dashboard')]    
     public function render()
     {
-        return view('livewire.portal.profile');
+        return view('livewire.admin.profile');
     }
 }

@@ -10,6 +10,7 @@
             <img id="profileDropdownButton" class="w-8 h-8 rounded-full border-2 border-[#0f277e] cursor-pointer" src="https://via.placeholder.com/50" alt="User Profile">
             <!-- Dropdown Menu -->
             <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-20">
+                <a href="{{ route('admin.profile') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Profile</a>
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
                     <button type="submit" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</button>

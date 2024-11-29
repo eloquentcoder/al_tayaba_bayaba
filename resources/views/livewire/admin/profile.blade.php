@@ -15,12 +15,7 @@
                     <img src="https://placehold.co/300x300/e2e8f0/blue?text=Profile" alt="Profile Image"
                         class="mx-auto rounded-xl object-cover mb-4">
                     <h2 class="text-[#0f277e] text-2xl font-bold mb-2">{{ auth()->user()->username }}</h2>
-                    <p class="text-[#0f277e] text-sm">Joined At {{ auth()->user()->created_at }}</p>
                 </div>
-                <button
-                    class="bg-gradient-to-r from-blue-500 to-[#0f277e] text-white px-6 py-2 rounded-full hover:from-[#0f277e] hover:to-blue-700 transition-all duration-300">
-                    IMAGE UPDATE
-                </button>
             </div>
 
             <!-- Profile Information Section -->
@@ -54,15 +49,6 @@
                                 class="w-full px-4 py-2 rounded-lg border text-[#0f277e] border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                                 wire:model="username">
                             @error('username')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block text-[#0f277e] text-sm font-medium">Phone Number</label>
-                            <input type="text" value="+44"
-                                class="w-full px-4 py-2 rounded-lg border text-[#0f277e] border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                                wire:model="phone_number">
-                            @error('phone_number')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
                         </div>

@@ -39,7 +39,7 @@ class Admins extends Component
         ]);
 
         $this->reset(['first_name', 'last_name', 'email', 'username']);
-        $this->dispatch('notify', ['type' => 'success', 'message' => 'Admin Created successfully']);
+        session()->flash('success', 'Admin created successfully! Username is as password');
         $this->dispatch('closeModal');
 
     }
