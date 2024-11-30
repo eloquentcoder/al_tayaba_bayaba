@@ -27,12 +27,11 @@
                     <a class="nav-link " href="faq.html">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="contact.html">Contact</a>
+                    <a class="nav-link {{ request()->routeIs('home.contact') ? 'active' : '' }}" href="{{ route('home.contact') }}">Contact</a>
                 </li>
             </ul>
         </div>
         <span class="navbar-text" id="pushNotificationArea">
-
             <!-- user panel -->
             <div class="notification-panel user-panel">
                 <button class="dropdown-toggle">

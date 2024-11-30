@@ -3,9 +3,11 @@
 namespace App\Livewire\Admin;
 
 use App\Actions\UpdateReferrerBalance;
+use App\Mail\AdminReplyDepositRequestMail;
 use App\Models\DepositRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -31,6 +33,8 @@ class Deposits extends Component
                 'status' => 'blacklisted'
             ]);
 
+            Mail::to($this->selectedDeposit->user->email)->send(new AdminReplyDepositRequestMail($this->selectedDeposit, "rejected"));
+
             session()->flash('success', 'Deposit request reject and blacklisted successfully!');
             $this->selectedDeposit = null;
             return;
@@ -39,6 +43,8 @@ class Deposits extends Component
         $this->selectedDeposit->update([
             'status' => 'rejected'
         ]);
+
+        Mail::to($this->selectedDeposit->user->email)->send(new AdminReplyDepositRequestMail($this->selectedDeposit, "rejected"));
 
         $this->selectedDeposit = null;
         session()->flash('success', 'Deposit request reject successfully!');
@@ -52,6 +58,8 @@ class Deposits extends Component
                 'status' => 'approved_by_subadmin'
             ]);
 
+            Mail::to($this->selectedDeposit->user->email)->send(new AdminReplyDepositRequestMail($this->selectedDeposit, "accepted"));
+
             session()->flash('success', 'Deposit request appeoved by sub admin successfully!');
             return;
         }
@@ -59,6 +67,7 @@ class Deposits extends Component
         $this->selectedDeposit->update([
             'status' => 'approved'
         ]);
+        Mail::to($this->selectedDeposit->user->email)->send(new AdminReplyDepositRequestMail($this->selectedDeposit, "accepted"));
 
         $user = User::find($this->selectedDeposit->user_id);
         $user->balance()->increment('deposit_balance', $this->selectedDeposit->amount);

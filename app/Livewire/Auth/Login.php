@@ -35,14 +35,16 @@ class Login extends Component
 
         if ($user->two_factor_enabled) {
             Auth::logout();
-
             // Store user ID in session for 2FA validation
             session()->put('user_2fa_id', $user->id);
-
             return redirect()->route('2fa.verify');
         }
 
-        return redirect()->intended(route('portal.dashboard'));
+
+        $redirect_route = session()->get('redirect_link');
+        session()->remove('redirect_link');
+
+        return redirect()->intended(route( $redirect_route ? $redirect_route : 'portal.dashboard'));
     }
 
     public function render()

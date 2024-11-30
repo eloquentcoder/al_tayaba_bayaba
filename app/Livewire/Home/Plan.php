@@ -25,6 +25,7 @@ class Plan extends Component
     public function createPlan()
     {
         if(!Auth::check()) {
+            session()->put('redirect_link', 'portal.packages');
             return redirect()->route('login');
         }
 

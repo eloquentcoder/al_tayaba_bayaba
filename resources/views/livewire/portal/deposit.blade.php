@@ -41,9 +41,6 @@
         </div>
 
     </div>
-
-    {{-- deposit modal --}}
-
     
 
     <div id="depositModal" class="{{ $isModalOpen && $currentModal == 1 ? "flex" : "hidden" }} fixed inset-0 bg-black bg-opacity-50 justify-center items-center z-50">

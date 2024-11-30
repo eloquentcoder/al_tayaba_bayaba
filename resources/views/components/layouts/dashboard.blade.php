@@ -48,13 +48,14 @@
         <!-- Sidebar -->
         <x-layouts.dashboard-sidebar />
         <!-- Main Content -->
-        <main class="flex-1 bg-cover bg-no-repeat"
+        <main class="flex-1 bg-cover bg-no-repeat lg:ml-64"
             style="background:linear-gradient(
           rgba(0, 0, 0, 0.7), 
           rgba(0, 0, 0, 0.7)
         ), url('{{ asset('earth.jpeg') }}') no-repeat; background-size: cover;">
             <!-- Header with notification and user profile -->
             <x-layouts.dashboard-navbar />
+
             {{ $slot }}
         </main>
     </div>

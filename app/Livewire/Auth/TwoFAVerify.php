@@ -30,7 +30,10 @@ class TwoFAVerify extends Component
             session()->put('two_factor_passed', true);
             $user->save();
 
-            return redirect()->route('portal.dashboard')->with('success', '2FA enabled successfully.');
+            $redirect_route = session()->get('redirect_link');
+            session()->remove('redirect_link');
+
+            return redirect()->intended(route($redirect_route ? $redirect_route : 'portal.dashboard'));
         }
 
         $this->addError('token', 'Invalid 2FA token.');

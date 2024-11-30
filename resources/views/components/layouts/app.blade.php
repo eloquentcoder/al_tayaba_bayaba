@@ -56,6 +56,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/deepblack/scss/flag-icon.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('themes/deepblack/scss/style.css') }}">
     <script src="{{ asset('themes/deepblack/js/modernizr.custom.js') }}"></script>
+    
 
     <style>
         .home-banner {

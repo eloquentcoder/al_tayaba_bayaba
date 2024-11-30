@@ -41,7 +41,7 @@
         <!-- Sidebar -->
       <x-layouts.admin-dashboard-sidebar />
         <!-- Main Content -->
-        <main class="flex-1 bg-cover bg-no-repeat" style="background:linear-gradient(
+        <main class="flex-1 bg-cover bg-no-repeat lg:ml-64" style="background:linear-gradient(
           rgba(0, 0, 0, 0.7), 
           rgba(0, 0, 0, 0.7)
         ), url('{{ asset('earth.jpeg') }}') no-repeat; background-size: cover;">

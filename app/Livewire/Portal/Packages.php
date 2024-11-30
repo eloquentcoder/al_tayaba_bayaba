@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Portal;
 
+use App\Mail\PackagePurchaseAlertMail;
 use App\Models\Plan;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -77,7 +79,6 @@ class Packages extends Component
     public function submitPackagePurchase()
     {
         try {
-            Log::info('Starting package purchase submission');
 
             if (!$this->payment_proof) {
                 throw new \Exception('No file attached');
@@ -91,7 +92,6 @@ class Packages extends Component
             // Try to store the file
             try {
                 $proofPath = $this->payment_proof->store('payment_proofs', 'public');
-                Log::info('File stored successfully at: ' . $proofPath);
             } catch (\Exception $e) {
                 Log::error('File storage failed:', [
                     'error' => $e->getMessage(),
@@ -100,13 +100,14 @@ class Packages extends Component
                 throw new \Exception('Failed to store file: ' . $e->getMessage());
             }
 
-            // Create subscription
             $subscription = Subscription::create([
                 'amount' => $this->amount,
                 'payment_proof' => $proofPath,
                 'user_id' => Auth::id(),
                 'plan_id' => $this->selectedPlan->id
             ]);
+
+            Mail::to($subscription->user->email)->to(new PackagePurchaseAlertMail($subscription));
 
             $this->isModalOpen = false;
             session()->flash('success', 'Purchase request submitted successfully! An admin will look at your request');

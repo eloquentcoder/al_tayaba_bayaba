@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\AdminAuthMiddleware;
 use App\Livewire\Admin\Admins;
+use App\Livewire\Admin\ContactForms;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Deposits;
 use App\Livewire\Admin\Login as AdminLogin;
@@ -13,6 +14,7 @@ use App\Livewire\Auth\PasswordReset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\TwoFAVerify;
 use App\Livewire\Home\About;
+use App\Livewire\Home\ContactUs;
 use App\Livewire\Home\Index;
 use App\Livewire\Home\Plan;
 use App\Livewire\Portal\MyReferral;
@@ -31,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('', Index::class)->name('home.index');
 Route::get('plan', Plan::class)->name('home.plan');
 Route::get('about', About::class)->name('home.about');
+Route::get('contact-us', ContactUs::class)->name('home.contact');
 
 Route::get('admin/login', AdminLogin::class)->name('admin.login');
 Route::get('login', Login::class)->name('login');
@@ -65,6 +68,7 @@ Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function (
     Route::get('admins', Admins::class)->name('admins');
     Route::get('plans', Plans::class)->name('plans');
     Route::get('subscription-requests', SubscriptionRequest::class)->name('subscription-requests');
+    Route::get('contact-forms', ContactForms::class)->name('contact-forms');
 });
 
 
