@@ -78,17 +78,13 @@ class Packages extends Component
 
     public function submitPackagePurchase()
     {
+
+        $this->validate([
+            'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}",
+            'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
         try {
-
-            if (!$this->payment_proof) {
-                throw new \Exception('No file attached');
-            }
-
-            $this->validate([
-                'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}",
-                'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            ]);
-
             try {
                 $proofPath = $this->payment_proof->store('payment_proofs', 'public');
             } catch (\Exception $e) {
