@@ -72,7 +72,7 @@ class SubscriptionRequest extends Component
     public function render()
     {
         return view('livewire.admin.subscription-request', [
-            'subscriptions' => Auth::user()->admin->is_super_admin ? Subscription::where('is_paid', false)->latest()->paginate(15) : Subscription::where([['is_paid', false], ['status', 'pending']])->latest()->paginate(15) 
+            'subscriptions' => Auth::user()->admin->is_super_admin ? Subscription::latest()->paginate(15) : Subscription::where([['is_paid', false], ['status', 'pending']])->latest()->paginate(15) 
         ]);
     }
 }

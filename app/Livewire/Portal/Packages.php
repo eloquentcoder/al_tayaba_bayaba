@@ -89,7 +89,6 @@ class Packages extends Component
                 'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
             ]);
 
-            // Try to store the file
             try {
                 $proofPath = $this->payment_proof->store('payment_proofs', 'public');
             } catch (\Exception $e) {
