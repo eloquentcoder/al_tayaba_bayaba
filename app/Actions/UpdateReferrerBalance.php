@@ -33,7 +33,7 @@ class UpdateReferrerBalance
                 $bonus = $amount * $bonusPercentages[$level];
 
                 // Update the referrer's balance
-                $referrer->balance()->increment('balance', $bonus);
+                $referrer->balance()->increment('emr_share_balance', $bonus);
 
                 // Log or notify (optional)
                 // Log::info("User ID: {$referrer->id} received a bonus of {$bonus} for Level {$level}");
