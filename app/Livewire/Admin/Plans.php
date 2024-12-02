@@ -37,8 +37,17 @@ class Plans extends Component
         ]);
 
         $this->reset(['title', 'description', 'min_amount', 'max_amount', 'min_interest_rate', 'max_interest_rate']);
-        $this->dispatch('notify', ['type' => 'success', 'message' => 'Plan Created successfully']);
+        session()->flash('success', 'Plan Created successfully!');
         $this->dispatch('closeModal');
+
+    }
+
+    public function deletePlan($id)
+    {
+        $plan = Plan::find($id);
+        $plan->delete();
+
+        session()->flash('success', 'Plan deleted successfully!');
 
     }
 

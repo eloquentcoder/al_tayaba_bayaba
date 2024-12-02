@@ -10,7 +10,7 @@
     <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 mt-10">
         @foreach ($plans as $plan)
             <x-dashboard.plans-card :title="$plan->title" :description="$plan->description" :min_amount="$plan->min_investment_amount" :max_amount="$plan->max_investment_amount"
-                :min_interest_rate="$plan->min_interest_rate" :max_interest_rate="$plan->max_interest_rate" :to_purchase="false" />
+                :min_interest_rate="$plan->min_interest_rate" :max_interest_rate="$plan->max_interest_rate" :to_purchase="false" :to_delete="true" :plan_id="$plan->id" />
         @endforeach
     </div>
 

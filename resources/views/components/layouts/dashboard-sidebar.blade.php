@@ -14,23 +14,23 @@
 
             <div class="space-y-1">
                 <div class="flex items-center justify-between">
-                    <span class="text-[#0f277e] text-sm">Deposit Wallet</span>
+                    <span class="text-[#0f277e] text-sm">Purchase Wallet</span>
                     <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->deposit_balance }}</span>
                 </div>
-                <div class="flex items-center justify-between">
+                {{-- <div class="flex items-center justify-between">
                     <span class="text-[#0f277e] text-sm">Old Main Balance</span>
                     <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->main_balance }}</span>
-                </div>
+                </div> --}}
                 <div class="flex items-center justify-between">
-                    <span class="text-[#0f277e] text-sm">EMR Wallet</span>
+                    <span class="text-[#0f277e] text-sm">Rental Wallet</span>
                     <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->emr_balance }}</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="text-[#0f277e] text-sm">EMR Share Wallet</span>
+                    <span class="text-[#0f277e] text-sm">Rental Profit Wallet</span>
                     <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->emr_share_balance }}</span>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="text-[#0f277e] text-sm">Sales Bonus Wallet</span>
+                    <span class="text-[#0f277e] text-sm">Referral Wallet</span>
                     <span class="text-[#0f277e] font-medium">${{ auth()->user()->balance->sales_bonus_balance }}</span>
                 </div>
             </div>
@@ -61,22 +61,6 @@
     </div>
 
     <nav class="">
-        <a href="#"
-            class="{{ request()->routeIs('portal.trading-partner') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined ">
-                <path d="M12 16v5" />
-                <path d="M16 14v7" />
-                <path d="M20 10v11" />
-                <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" />
-                <path d="M4 18v3" />
-                <path d="M8 14v7" />
-            </svg>
-            <span
-                class="uppercase ml-2 {{ request()->routeIs('portal.trading-partner') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Trading
-                partner</span>
-        </a>
         <a href="{{ route('portal.dashboard') }}"
             class="{{ request()->routeIs('portal.dashboard') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -119,23 +103,6 @@
             class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-bitcoin">
-                <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#0f277e;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:rgb(255, 255, 255);stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <path
-                    d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727" />
-            </svg>
-            <span
-                class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Badge</span>
-        </a>
-        <a href="#"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="lucide lucide-banknote">
                 <rect width="20" height="12" x="2" y="6" rx="2" />
                 <circle cx="12" cy="12" r="2" />
@@ -172,7 +139,7 @@
                 class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">withdraw
                 history</span>
         </a>
-        <a href="#"
+        <a href="{{ route('portal.packages.purchase-history') }}"
             class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -183,7 +150,7 @@
                 <path d="m16.71 13.88.7.71-2.82 2.82" />
             </svg>
             <span
-                class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">transfer</span>
+                class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Package Purchase History</span>
         </a>
         <a href="{{ route('portal.referrals') }}"
             class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">

@@ -116,6 +116,9 @@
                                                 <div class="input-group-prepend w-50">
                                                     <select wire:model="phone_code"
                                                         class="form-control country_code dialCode-change">
+                                                        <option value="+92" data-name="Pakistan" data-code="PK">
+                                                            Pakistan (+92)
+                                                        </option>
                                                         <option value="+93" data-name="Afghanistan" data-code="AF">
                                                             Afghanistan (+93)
                                                         </option>
@@ -575,9 +578,7 @@
                                                         <option value="+968" data-name="Oman" data-code="OM"> Oman
                                                             (+968)
                                                         </option>
-                                                        <option value="+92" data-name="Pakistan" data-code="PK">
-                                                            Pakistan (+92)
-                                                        </option>
+                                                       
                                                         <option value="+680" data-name="Palau" data-code="PW">
                                                             Palau (+680)
                                                         </option>

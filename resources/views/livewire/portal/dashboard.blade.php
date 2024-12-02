@@ -14,7 +14,7 @@
           <!-- Card Title -->
           <p class="text-sm font-semibold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Total Deposit</p>
           <!-- Card Value with Gradient -->
-          <p class="text-3xl font-bold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">$0</p>
+          <p class="text-3xl font-bold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">${{ $total_deposit }}</p>
       </div>
       <div class="bg-[#ffffff] p-4 rounded-lg shadow-lg text-center text-white">
           <!-- Hexagon Icon Background -->
@@ -27,9 +27,9 @@
               </div>
           </div>
           <!-- Card Title -->
-          <p class="text-sm font-semibold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Total Invest</p>
+          <p class="text-sm font-semibold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Total Purchased</p>
           <!-- Card Value with Gradient -->
-          <p class="text-3xl font-bold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">$0</p>
+          <p class="text-3xl font-bold bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">${{ $total_purchased }}</p>
       </div>
       <div class="bg-[#ffffff] p-4 rounded-lg shadow-lg text-center text-white">
           <!-- Hexagon Icon Background -->

@@ -1,34 +1,36 @@
 <?php
 
-use App\Http\Middleware\AdminAuthMiddleware;
-use App\Livewire\Admin\Admins;
-use App\Livewire\Admin\ContactForms;
-use App\Livewire\Admin\Dashboard as AdminDashboard;
-use App\Livewire\Admin\Deposits;
-use App\Livewire\Admin\Login as AdminLogin;
-use App\Livewire\Admin\Plans;
-use App\Livewire\Admin\Profile as AdminProfile;
-use App\Livewire\Admin\SubscriptionRequest;
-use App\Livewire\Auth\Login;
-use App\Livewire\Auth\PasswordReset;
-use App\Livewire\Auth\Register;
-use App\Livewire\Auth\TwoFAVerify;
-use App\Livewire\Home\About;
-use App\Livewire\Home\ContactUs;
-use App\Livewire\Home\Index;
 use App\Livewire\Home\Plan;
-use App\Livewire\Portal\MyReferral;
-use App\Livewire\Portal\Dashboard;
-use App\Livewire\Portal\Deposit;
-use App\Livewire\Portal\DepositHistory;
-use App\Livewire\Portal\Packages;
+use App\Livewire\Auth\Login;
+use App\Livewire\Home\About;
+use App\Livewire\Home\Index;
+use App\Livewire\Admin\Plans;
+use App\Livewire\Admin\Admins;
+use App\Livewire\Auth\Register;
 use App\Livewire\Portal\Payout;
-use App\Livewire\Portal\PayoutPreview;
+use App\Livewire\Admin\Deposits;
+use App\Livewire\Home\ContactUs;
+use App\Livewire\Portal\Deposit;
 use App\Livewire\Portal\Profile;
-use App\Livewire\Portal\Transactions;
-use App\Livewire\Portal\TwoStepSecurity;
+use App\Livewire\Portal\Packages;
+use App\Livewire\Auth\TwoFAVerify;
+use App\Livewire\Portal\Dashboard;
+use App\Livewire\Portal\MyReferral;
+use App\Livewire\Admin\ContactForms;
+use App\Livewire\Auth\PasswordReset;
 use Illuminate\Support\Facades\Auth;
+use App\Livewire\Portal\Transactions;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Portal\PayoutPreview;
+use App\Livewire\Portal\DepositHistory;
+use App\Livewire\Portal\TwoStepSecurity;
+use App\Livewire\Admin\Login as AdminLogin;
+use App\Livewire\Admin\SubscriptionRequest;
+use App\Http\Middleware\AdminAuthMiddleware;
+use App\Livewire\Admin\Profile as AdminProfile;
+use App\Livewire\Portal\PackagePurchaseHistory;
+use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Users;
 
 Route::get('', Index::class)->name('home.index');
 Route::get('plan', Plan::class)->name('home.plan');
@@ -51,9 +53,10 @@ Route::middleware(['auth'])->as('portal.')->group(function () {
         
         Route::get('payout', Payout::class)->name('payout');
         Route::get('payout/preview', PayoutPreview::class)->name('payout-preview');
-        
         Route::get('referrals', MyReferral::class)->name('referrals');
         Route::get('packages', Packages::class)->name('packages');
+        Route::get('packages/purchase-history', PackagePurchaseHistory::class)->name('packages.purchase-history');
+        
         Route::get('transactions', Transactions::class)->name('transactions');
         Route::get('deposit-history', DepositHistory::class)->name('deposit-history');
     });
@@ -66,6 +69,7 @@ Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function (
     Route::get('profile', AdminProfile::class)->name('profile');
     Route::get('deposits', Deposits::class)->name('deposits');
     Route::get('admins', Admins::class)->name('admins');
+    Route::get('users', Users::class)->name('users');
     Route::get('plans', Plans::class)->name('plans');
     Route::get('subscription-requests', SubscriptionRequest::class)->name('subscription-requests');
     Route::get('contact-forms', ContactForms::class)->name('contact-forms');

@@ -14,8 +14,8 @@
 
     <div class="mt-10 text-center w-1/3 mx-auto">
         <h5 class="text-xl">JOIN NOW</h5>
-        <h3 class="text-5xl">Educational Packages</h3>
-        <p>We offer different types of educational packages, which allows you earning along with learning. We are
+        <h3 class="text-5xl">Rental Packages</h3>
+        <p>We offer different types of rental packages, which allows you earning along with learning. We are
             offering online classes as well as physical classes around the Globe.</p>
     </div>
 

@@ -1,4 +1,4 @@
-@props(['title', 'min_amount', 'max_amount','min_interest_rate', 'max_interest_rate', 'description', 'to_purchase'])
+@props(['title', 'min_amount', 'max_amount','min_interest_rate', 'max_interest_rate', 'description', 'to_purchase', 'to_delete', 'plan_id'])
 
 <div class="rounded-md bg-white text-[#0f277e] p-5 text-center">
     <h1 class="font-bold text-4xl">{{ $title }}</h1>
@@ -13,5 +13,13 @@
             <span>Purchase Now</span>
         </a>
     @endif
+
+    @if ($to_delete)
+        <button wire:click="deletePlan({{ $planId }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-3">
+            Delete Plan
+        </button>
+    @endif
+
+
 
 </div>

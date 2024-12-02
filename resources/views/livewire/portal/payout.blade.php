@@ -3,16 +3,7 @@
 
     <div class="w-full mx-auto mt-5">
         <div class="flex space-x-4 items-center">
-            <!-- QR Code Card -->
-            <div class="bg-white p-4 rounded-lg shadow-lg text-center">
-                <div class="bg-white p-2 rounded-lg">
-                    <img src="{{ asset('T-icon.png') }}" alt="QR Code" class="mx-auto h-[100px] w-[100px]">
-                </div>
-                <button class="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4 rounded-full hover:from-blue-500 hover:to-blue-700">
-                    WITHDRAW NOW
-                </button>
-            </div>
-        
+    
             <!-- Faysal Bank Card -->
             <div class="bg-white p-4 rounded-lg shadow-lg text-center">
                 <div class="bg-white p-2 rounded-lg">
@@ -43,9 +34,9 @@
                     <div class="flex items-center bg-black rounded-md">
                         <select id="wallet" type="number" class="w-full p-2 border text-[#0f277e] focus:outline-none">
                             <option value="">-- Select Wallet --</option>
-                            <option value="">Deposit Wallet - $0</option>
-                            <option value="">EMR Wallet - $0</option>
-                            <option value="">EMR Share Wallet - $0</option>
+                            <option value="">Referral Wallet - ${{ auth()->user()->balance->sales_bonus_balance }}</option>
+                            <option value="">Rental Wallet - ${{ auth()->user()->balance->emr_balance }}</option>
+                            <option value="">Rental Profit Wallet - ${{ auth()->user()->balance->emr_share_balance }}</option>
                         </select>
                     </div>
                 </div>
