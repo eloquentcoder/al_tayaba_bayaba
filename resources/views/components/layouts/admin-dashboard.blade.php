@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     @vite('resources/css/app.css')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       /* Scrollbar Track */
 ::-webkit-scrollbar {
@@ -64,6 +65,8 @@
           });
       });
   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
   const menuButton = document.getElementById('menuDropdownButton');
