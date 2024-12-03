@@ -10,6 +10,8 @@
 
     <div class="mt-10">
 
+        <input type="text" wire:model.live="search" class="form-control my-2 p-2 rounded-md text-black" placeholder="Search Users..." />
+
         <div class="overflow-hidden border border-gray-700 rounded-lg shadow-lg">
             <table class="min-w-full divide-y divide-gray-700">
                 <thead class="bg-[#0f277e] text-white">
@@ -18,6 +20,7 @@
                         <th class="py-3 px-4 text-left text-sm font-bold">Full Name</th>
                         <th class="py-3 px-4 text-left text-sm font-bold">Email</th>
                         <th class="py-3 px-4 text-left text-sm font-bold">Username</th>
+                        <th class="py-3 px-4 text-left text-sm font-bold">Status</th>
                         <th class="py-3 px-4 text-left text-sm font-bold">Actions</th>
                     </tr>
                 </thead>
@@ -28,6 +31,7 @@
                             <td class="py-3 px-4 text-black">{{ $user->first_name . ' ' . $user->last_name }}</td>
                             <td class="py-3 px-4 text-black">{{ $user->email }}</td>
                             <td class="py-3 px-4 text-black">{{ $user->username }}</td>
+                            <td class="py-3 px-4 text-black">{{ $user->is_active ? 'Active' : "Inactive" }}</td>
                             <td class="py-3 px-4 text-black flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-4 cursor-pointer">

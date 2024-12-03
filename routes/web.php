@@ -31,6 +31,7 @@ use App\Livewire\Admin\Profile as AdminProfile;
 use App\Livewire\Portal\PackagePurchaseHistory;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Users;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('', Index::class)->name('home.index');
 Route::get('plan', Plan::class)->name('home.plan');
@@ -81,4 +82,10 @@ Route::middleware('auth')->group(function () {
         Auth::logout();
         return redirect()->route('login');
     })->name('logout');
+});
+
+Route::get('mail', function () {
+    Mail::raw('This is a test email.', function ($message) {
+        $message->to('eloquentintech@gmail.com')->subject('Test Email');
+    });
 });

@@ -24,6 +24,7 @@ class Register extends Component
     public function mount()
     {
         // Get the 'ref' parameter from the URL
+        $this->phone_code = "+92";
         $this->referrer = Request::query('ref');
     }
 

@@ -9,6 +9,9 @@ use Livewire\Component;
 class Users extends Component
 {
 
+    public $search = '';
+
+
     public function toggleBlockUser(User $user)
     {
         $user->update([
@@ -17,7 +20,8 @@ class Users extends Component
         session()->flash('success', 'user status toggled successfully!');
     }
 
-    public function deleteUser(User $user) {
+    public function deleteUser(User $user)
+    {
         $user->delete();
         session()->flash('success', 'user deleted successfully!');
     }
@@ -26,7 +30,12 @@ class Users extends Component
     public function render()
     {
         return view('livewire.admin.users', [
-            'users' => User::where('user_type', 'user')->latest()->paginate(20)
+            'users' => User::where(function ($query) {
+                $query->where('first_name', 'like', "%{$this->search}%")
+                    ->orWhere('last_name', 'like', "%{$this->search}%")
+                    ->orWhere('username', 'like', "%{$this->search}%")
+                    ->orWhere('email', 'like', "%{$this->search}%");
+            })->where('user_type', 'user')->latest()->paginate(20)
         ]);
     }
 }
