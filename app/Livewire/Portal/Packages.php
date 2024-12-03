@@ -102,7 +102,7 @@ class Packages extends Component
                 'plan_id' => $this->selectedPlan->id
             ]);
 
-            Mail::to($subscription->user->email)->to(new PackagePurchaseAlertMail($subscription));
+            Mail::to(env('APP_ADMIN_EMAIL'))->to(new PackagePurchaseAlertMail($subscription));
 
             $this->isModalOpen = false;
             session()->flash('success', 'Purchase request submitted successfully! An admin will look at your request');
