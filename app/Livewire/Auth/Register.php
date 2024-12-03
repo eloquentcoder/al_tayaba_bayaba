@@ -35,11 +35,30 @@ class Register extends Component
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|unique:users,username|max:255',
-            'phone_number' => 'required|string|unique:users,phone_number|max:15',
+            'phone_number' => 'required|string|unique:users,phone_number|max:10|min:10',
             'phone_code' => 'required|string|max:10',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                \Illuminate\Validation\Rules\Password::min(8)
+                    ->mixedCase()
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+            ],
             'referrer' => 'nullable|exists:users,username'
+        ], [
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password.mixedCase' => 'The password must include both uppercase and lowercase letters.',
+            'password.letters' => 'The password must include at least one letter.',
+            'password.numbers' => 'The password must include at least one number.',
+            'password.symbols' => 'The password must include at least one special character.',
+            'password.uncompromised' => 'The password has been found in a data leak. Please choose a different password.'
         ]);
+        
 
         if ($this->referrer) {
             $parent = User::where('username', $this->referrer)->first();
