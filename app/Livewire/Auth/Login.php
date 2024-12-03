@@ -29,8 +29,14 @@ class Login extends Component
             $this->addError('email_username', 'Invalid email/username or password.');
             return;
         }
-
+  
         $user = User::where("email", $this->email_username)->orWhere('username', $this->email_username)->first();
+
+        if (!$user->is_active) {
+            $this->addError('email_username', 'You access has been restricted. Contact support for help');
+            return;
+        }
+
         Auth::login($user);
 
         if ($user->two_factor_enabled) {
