@@ -22,7 +22,7 @@ class UpdateReferrerBalance
         $currentUserId = $child_id;
 
         // Loop through 4 levels of referrers
-        for ($level = 1; $level <= 4; $level++) {
+        for ($level = 1; $level <= 7; $level++) {
             // Get the current user's referrer
             $user = User::find($currentUserId);
             if (!$user || !$user->parent_id) {
