@@ -25,7 +25,7 @@
                 <h1 class="font-bold text-4xl">{{ $plan->title }}</h1>
                 <p class="mn-2 text-2xl">${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}</p>
                 <div class="bg-[#0f277e] text-white rounded-md">{{ $plan->min_interest_rate }}% -
-                    {{ $plan->max_investment_rate }}% every month</div>
+                    {{ $plan->max_interest_rate }}% every month</div>
                 <p class="text-[#0f277e] mt-3 text-xs">Profit For Every Day</p>
 
                 <div class="my-2">

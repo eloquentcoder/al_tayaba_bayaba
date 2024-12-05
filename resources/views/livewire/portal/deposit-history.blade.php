@@ -7,7 +7,7 @@
                 <tr>
                     <th class="py-3 px-4 text-left text-sm font-bold">S/N.</th>
                     <th class="py-3 px-4 text-left text-sm font-bold">DEPOSIT ID</th>
-                    <th class="py-3 px-4 text-left text-sm font-bold">USER</th>
+                    {{-- <th class="py-3 px-4 text-left text-sm font-bold">USER</th> --}}
                     <th class="py-3 px-4 text-left text-sm font-bold">AMOUNT</th>
                     <th class="py-3 px-4 text-left text-sm font-bold">STATUS</th>
                     <th class="py-3 px-4 text-left text-sm font-bold">TIME</th>
@@ -18,7 +18,7 @@
                     <tr>
                         <td class="py-3 px-4">{{ $key + 1 }}</td>
                         <td class="py-3 px-4 text-black">{{ $deposit->unique_id }}</td>
-                        <td class="py-3 px-4 text-black">{{ $deposit->user->full_name }}</td>
+                        {{-- <td class="py-3 px-4 text-black">{{ $deposit->user->full_name }}</td> --}}
                         <td class="py-3 px-4 text-black">{{ $deposit->amount }}</td>
                         <td class="py-3 px-4 text-black">{{ $deposit->status }}</td>
                         <td class="py-3 px-4 text-black">{{ $deposit->created_at->format('d F, Y h:i A') }}</td>

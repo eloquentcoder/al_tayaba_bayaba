@@ -1,4 +1,4 @@
-@props(['title', 'min_amount', 'max_amount','min_interest_rate', 'max_interest_rate', 'description', 'to_purchase', 'to_delete', 'plan_id'])
+@props(['title', 'min_amount', 'max_amount','min_interest_rate', ' max_interest_rate', 'description', 'to_purchase', 'to_delete', 'plan_id'])
 
 <div class="rounded-md bg-white text-[#0f277e] p-5 text-center">
     <h1 class="font-bold text-4xl">{{ $title }}</h1>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Actions\CreateTransaction;
 use App\Actions\UpdateReferrerBalance;
 use App\Mail\PackagePurchaseAdminReplyMail;
 use App\Models\Subscription;
@@ -10,9 +11,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class SubscriptionRequest extends Component
 {
+    use WithPagination;
+
     public $selectedSubscription;
 
     public function selectSubscription(Subscription $subscription)
@@ -57,7 +61,9 @@ class SubscriptionRequest extends Component
         ]);
 
         $user = User::find($this->selectedSubscription->user_id);
-        $user->balance()->increment('emr_balance', $this->selectedSubscription->amount);
+        $user->balance()->increment('deposit_balance', $this->selectedSubscription->amount);
+
+        (new CreateTransaction)->handle('package_purchase', $this->selectedSubscription->amount, 'successful', $user->id);
 
         (new UpdateReferrerBalance())->updateBalance($user->id, $this->selectedSubscription->amount);
 

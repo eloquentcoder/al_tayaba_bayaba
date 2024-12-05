@@ -12,7 +12,7 @@ class DepositHistory extends Component
     public function render()
     {
         return view('livewire.portal.deposit-history', [
-            'deposits' => DepositRequest::latest()->paginate(10)
+            'deposits' => DepositRequest::where('user_id', auth()->id())->latest()->paginate(10)
         ]);
     }
 }

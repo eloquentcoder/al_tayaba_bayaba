@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Actions\CreateTransaction;
 use App\Actions\UpdateReferrerBalance;
 use App\Mail\AdminReplyDepositRequestMail;
 use App\Models\DepositRequest;
@@ -10,9 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Deposits extends Component
 {
+    use WithPagination;
 
     public $selectedDeposit;
 
@@ -28,7 +31,7 @@ class Deposits extends Component
 
     public function rejectDeposit()
     {
-        if($this->selectedDeposit->status == 'rejected') {
+        if ($this->selectedDeposit->status == 'rejected') {
             $this->selectedDeposit->update([
                 'status' => 'blacklisted'
             ]);
@@ -59,7 +62,6 @@ class Deposits extends Component
             ]);
 
             Mail::to($this->selectedDeposit->user->email)->send(new AdminReplyDepositRequestMail($this->selectedDeposit, "accepted"));
-
             session()->flash('success', 'Deposit request appeoved by sub admin successfully!');
             return;
         }
@@ -69,6 +71,8 @@ class Deposits extends Component
         ]);
         Mail::to($this->selectedDeposit->user->email)->send(new AdminReplyDepositRequestMail($this->selectedDeposit, "accepted"));
 
+        (new CreateTransaction)->handle('wallet_deposit', $this->selectedDeposit->amount, 'successful', $this->selectedDeposit->user->id);
+
         $user = User::find($this->selectedDeposit->user_id);
         $user->balance()->increment('deposit_balance', $this->selectedDeposit->amount);
 
@@ -76,14 +80,14 @@ class Deposits extends Component
 
         session()->flash('success', 'Deposit request confirmed successfully!');
         $this->selectedDeposit = null;
-
     }
 
-    #[Layout('components.layouts.admin-dashboard')]    
+    #[Layout('components.layouts.admin-dashboard')]
     public function render()
     {
+
         return view('livewire.admin.deposits', [
-            'deposits' => Auth::user()->admin->is_super_admin ? DepositRequest::latest()->paginate(15): DepositRequest::where('status', 'pending')->latest()->paginate(15)
+            'deposits' => Auth::user()->admin->is_super_admin ? DepositRequest::with('user')->latest()->paginate(15) : DepositRequest::with('user')->where('status', 'pending')->latest()->paginate(15)
         ]);
     }
 }

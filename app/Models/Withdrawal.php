@@ -9,4 +9,7 @@ class Withdrawal extends Model
 {
     /** @use HasFactory<\Database\Factories\WithdrawalFactory> */
     use HasFactory;
+
+    protected $guarded = [];
+
 }

@@ -23,43 +23,43 @@
             <button x-on:click="activeTab = 'level1'" :class="{ 'bg-[#0f277e]': activeTab === 'level1' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 1</span>
-                <span>{{ count($level_1_referrals) }}</span>
+                <span>{{ count($level_1_referrals) }} ({{ $level_1_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level2'" :class="{ 'bg-[#0f277e]': activeTab === 'level2' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 2</span>
-                <span>{{ count($level_2_referrals) }}</span>
+                <span>{{ count($level_2_referrals) }} ({{ $level_2_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level3'" :class="{ 'bg-[#0f277e]': activeTab === 'level3' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 3</span>
-                <span>{{ count($level_3_referrals) }}</span>
+                <span>{{ count($level_3_referrals) }} ({{ $level_3_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level4'" :class="{ 'bg-[#0f277e]': activeTab === 'level4' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 4</span>
-                <span>{{ count($level_4_referrals) }}</span>
+                <span>{{ count($level_4_referrals) }} ({{ $level_4_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level5'" :class="{ 'bg-[#0f277e]': activeTab === 'level5' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 5</span>
-                <span>{{ count($level_5_referrals) }}</span>
+                <span>{{ count($level_5_referrals) }} ({{ $level_5_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level6'" :class="{ 'bg-[#0f277e]': activeTab === 'level6' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 6</span>
-                <span>{{ count($level_6_referrals) }}</span>
+                <span>{{ count($level_6_referrals) }} ({{ $level_6_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level7'" :class="{ 'bg-[#0f277e]': activeTab === 'level7' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
                 <span>Level 7</span>
-                <span>{{ count($level_7_referrals) }}</span>
+                <span>{{ count($level_7_referrals) }} ({{ $level_7_total }}$)</span>
             </button>
         </div>
 
@@ -72,15 +72,20 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_1_referrals as $referral)
+                                    @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach
@@ -98,15 +103,20 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_2_referrals as $referral)
+                                    @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach
@@ -124,14 +134,19 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 @foreach ($level_3_referrals as $referral)
+                                    @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach
@@ -149,15 +164,20 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_4_referrals as $referral)
+                                      @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach
@@ -175,15 +195,20 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_5_referrals as $referral)
+                                      @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach
@@ -201,15 +226,20 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_6_referrals as $referral)
+                                      @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach
@@ -227,15 +257,20 @@
                                 <tr class="bg-[#0f277e] text-white">
                                     <th class="px-4 py-2 text-left">USERNAME</th>
                                     <th class="px-4 py-2 text-left">EMAIL</th>
+                                    <th class="px-4 py-2 text-left">TOTAL PURCHASE AMOUNT</th>
                                     <th class="px-4 py-2 text-left">JOINED AT</th>
                                 </tr>
                             </thead>
                             <tbody class="text-[#0f277e]">
                                 <!-- Row 1 -->
                                 @foreach ($level_7_referrals as $referral)
+                                      @php
+                                        $total_purchase_amount = $referral->subscriptions->sum('amount');
+                                    @endphp
                                     <tr class="border-b border-gray-700">
                                         <td class="px-4 py-2">{{ $referral->username }}</td>
                                         <td class="px-4 py-2">{{ $referral->email }}</td>
+                                        <td class="px-4 py-2">{{ $total_purchase_amount }}$</td>
                                         <td class="px-4 py-2">{{ $referral->created_at->format('d F, Y h:i A') }}</td>
                                     </tr>
                                 @endforeach

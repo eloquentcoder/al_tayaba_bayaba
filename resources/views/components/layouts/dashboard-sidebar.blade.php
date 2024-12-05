@@ -99,19 +99,7 @@
             <span
                 class="uppercase ml-2 {{ request()->routeIs('portal.packages') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">Packages</span>
         </a>
-        <a href="#"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-banknote">
-                <rect width="20" height="12" x="2" y="6" rx="2" />
-                <circle cx="12" cy="12" r="2" />
-                <path d="M6 12h.01M18 12h.01" />
-            </svg>
-            <span
-                class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Invest
-                history</span>
-        </a>
+    
         <a href="{{ route('portal.deposit-history') }}"
             class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -164,20 +152,6 @@
             </svg>
             <span class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">my
                 referral</span>
-        </a>
-        <a href="#"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-gift">
-                <rect x="3" y="8" width="18" height="4" rx="1" />
-                <path d="M12 8v13" />
-                <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
-                <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
-            </svg>
-            <span
-                class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">referral
-                bonus</span>
         </a>
         <a href="{{ route('portal.transactions') }}"
             class="{{ request()->routeIs('portal.packages') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">

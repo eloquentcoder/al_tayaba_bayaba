@@ -5,9 +5,11 @@ namespace App\Livewire\Admin;
 use App\Models\Plan;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Plans extends Component
 {
+    use WithPagination;
 
     public $title;
     public $description;

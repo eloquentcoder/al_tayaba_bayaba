@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'parent_id');
     }
 
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
     public function referrer()
     {
         return $this->belongsTo(User::class, 'parent_id');

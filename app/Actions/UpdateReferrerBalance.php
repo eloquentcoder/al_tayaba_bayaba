@@ -14,9 +14,9 @@ class UpdateReferrerBalance
             2 => 0.03,  // 3% for 2nd level
             3 => 0.02,  // 2% for 3rd level
             4 => 0.015, // 1.5% for 4th level
-            5 => 0.05, // 0.5% for 5th level
-            6 => 0.05, // 0.5% for 6th level
-            7 => 0.05, // 0.5% for 7th level
+            5 => 0.005, // 0.5% for 5th level
+            6 => 0.005, // 0.5% for 6th level
+            7 => 0.005, // 0.5% for 7th level
         ];
 
         $currentUserId = $child_id;
