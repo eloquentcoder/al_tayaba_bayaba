@@ -42,7 +42,7 @@
                 <td class="py-3 px-4 text-black">{{ $transaction->unique_id }}</td>
                 <td class="py-3 px-4 text-black">{{ $transaction->amount }}</td>
                 <td class="py-3 px-4 text-black">{{ $transaction->formatted_type }}</td>
-                <td class="py-3 px-4 text-black">20 Nov 2024 05:31 AM</td>
+                <td class="py-3 px-4 text-black">{{ $transaction->created_at }}</td>
             </tr>
              @endforeach
             </tbody>

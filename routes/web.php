@@ -33,6 +33,7 @@ use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Transactions as AdminTransactions;
 use App\Livewire\Admin\Users;
 use App\Livewire\Admin\WithdrawalRequests;
+use App\Livewire\Portal\WithdrawalHistory;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('', Index::class)->name('home.index');
@@ -62,6 +63,7 @@ Route::middleware(['auth'])->as('portal.')->group(function () {
         
         Route::get('transactions', Transactions::class)->name('transactions');
         Route::get('deposit-history', DepositHistory::class)->name('deposit-history');
+        Route::get('withdrawal-history', WithdrawalHistory::class)->name('withdrawal-history');
     });
     Route::get('twostep-security', TwoStepSecurity::class)->name('twostep-security');
 

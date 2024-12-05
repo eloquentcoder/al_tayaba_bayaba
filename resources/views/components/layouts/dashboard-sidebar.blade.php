@@ -101,7 +101,7 @@
         </a>
     
         <a href="{{ route('portal.deposit-history') }}"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+            class="{{ request()->routeIs('portal.deposit-history') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="lucide lucide-badge-dollar-sign">
@@ -114,8 +114,8 @@
                 class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">deposit
                 history</span>
         </a>
-        <a href="#"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+        <a href="{{ route('portal.withdrawal-history') }}"
+            class="{{ request()->routeIs('portal.withdrawal-history') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="lucide lucide-receipt">
@@ -128,7 +128,7 @@
                 history</span>
         </a>
         <a href="{{ route('portal.packages.purchase-history') }}"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+            class="{{ request()->routeIs('portal.purchase-history') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="lucide lucide-coins">
@@ -141,7 +141,7 @@
                 class="uppercase ml-2 bg-gradient-to-r from-[#0f277e] to-[#0f277e] text-transparent bg-clip-text">Package Purchase History</span>
         </a>
         <a href="{{ route('portal.referrals') }}"
-            class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+            class="{{ request()->routeIs('portal.referrals') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="lucide lucide-app-window-mac">
@@ -154,7 +154,7 @@
                 referral</span>
         </a>
         <a href="{{ route('portal.transactions') }}"
-            class="{{ request()->routeIs('portal.packages') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
+            class="{{ request()->routeIs('portal.transactions') ? 'bg-[#0f277e] text-[#ffffff]' : 'text-[#0f277e]' }} flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="url(#grad1)" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="lucide lucide-arrow-right-left">
@@ -164,8 +164,9 @@
                 <path d="M4 17h16" />
             </svg>
             <span
-                class="uppercase ml-2 {{ request()->routeIs('portal.packages') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">transactions</span>
+                class="uppercase ml-2 {{ request()->routeIs('portal.transactions') ? 'text-[#ffffff]' : 'text-[#0f277e]' }}">transactions</span>
         </a>
+        
         <a href="#"
             class="flex items-center p-5 rounded hover:bg-gray-100 hover:text-white border-b border-b-black">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
