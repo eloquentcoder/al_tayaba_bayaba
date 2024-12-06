@@ -61,7 +61,7 @@ class SubscriptionRequest extends Component
         ]);
 
         $user = User::find($this->selectedSubscription->user_id);
-        $user->balance()->increment('emr_balance', $this->selectedSubscription->amount);
+        $user->balance()->increment('deposit_balance', $this->selectedSubscription->amount);
 
         (new CreateTransaction)->handle('package_purchase', $this->selectedSubscription->amount, 'successful', $user->id);
 
