@@ -125,6 +125,11 @@ class Packages extends Component
 
     public function setModal($modalID)
     {
+        if ($this->currentModal == 1) {
+            $this->validate([
+                'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}"
+            ]);
+        }
         $this->currentModal = $modalID;
     }
 

@@ -22,43 +22,43 @@
         <div class="flex flex-col">
             <button x-on:click="activeTab = 'level1'" :class="{ 'bg-[#0f277e]': activeTab === 'level1' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 1</span>
+                <span>Level 1 ({{$level_1_purchase_total}}$)</span>
                 <span>{{ count($level_1_referrals) }} ({{ $level_1_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level2'" :class="{ 'bg-[#0f277e]': activeTab === 'level2' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 2</span>
+                <span>Level 2 ({{$level_2_purchase_total}}$)</span>
                 <span>{{ count($level_2_referrals) }} ({{ $level_2_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level3'" :class="{ 'bg-[#0f277e]': activeTab === 'level3' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 3</span>
+                <span>Level 3 ({{$level_3_purchase_total}}$)</span>
                 <span>{{ count($level_3_referrals) }} ({{ $level_3_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level4'" :class="{ 'bg-[#0f277e]': activeTab === 'level4' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 4</span>
+                <span>Level 4 ({{$level_4_purchase_total}}$)</span>
                 <span>{{ count($level_4_referrals) }} ({{ $level_4_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level5'" :class="{ 'bg-[#0f277e]': activeTab === 'level5' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 5</span>
+                <span>Level 5 ({{$level_5_purchase_total}}$)</span>
                 <span>{{ count($level_5_referrals) }} ({{ $level_5_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level6'" :class="{ 'bg-[#0f277e]': activeTab === 'level6' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 6</span>
+                <span>Level 6 ({{$level_6_purchase_total}}$)</span>
                 <span>{{ count($level_6_referrals) }} ({{ $level_6_total }}$)</span>
             </button>
             <div class="h-5 w-px bg-gray-400 mx-auto"></div>
             <button x-on:click="activeTab = 'level7'" :class="{ 'bg-[#0f277e]': activeTab === 'level7' }"
                 class="px-8 py-2 hover:bg-[#0f277e] focus:outline-none flex flex-col rounded-md text-center items-center border-2 border-[#0f277e]">
-                <span>Level 7</span>
+                <span>Level 7 ({{$level_7_purchase_total}}$)</span>
                 <span>{{ count($level_7_referrals) }} ({{ $level_7_total }}$)</span>
             </button>
         </div>

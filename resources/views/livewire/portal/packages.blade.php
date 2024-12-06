@@ -127,6 +127,9 @@
                     <span
                         class="bg-gradient-to-r from-[#0f277e] to-600 text-white font-bold py-2 px-4 rounded-r-md">USD</span>
                 </div>
+            @error('amount')
+                <span class="text-red-500 text-xs">{{ $message }}</span>
+            @enderror
             </div>
             <button type="button" wire:click="setModal('2')"
                 class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 font-bold py-2 px-4 text-white rounded-full hover:from-blue-500 hover:to-blue-700">
