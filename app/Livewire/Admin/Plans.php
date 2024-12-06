@@ -18,6 +18,48 @@ class Plans extends Component
     public $min_interest_rate;
     public $max_interest_rate;
 
+    public $showUpdatePlanModal;
+    public $planToUpdate;
+
+    public function updatePlan($plan_id)
+    {
+        $plan = Plan::find($plan_id);
+        $this->planToUpdate = $plan;
+        $this->title = $plan->title;
+        $this->description = $plan->description;
+        $this->min_amount = $plan->min_investment_amount;
+        $this->max_amount = $plan->max_investment_amount;
+        $this->min_interest_rate = $plan->min_interest_rate;
+        $this->max_interest_rate = $plan->max_interest_rate;
+    }
+
+    public function updatePackage()
+    {
+        $this->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'min_amount' => 'required|numeric',
+            'max_amount' => 'required|numeric|gte:min_amount',
+            'min_interest_rate' => 'required|numeric',
+            'max_interest_rate' => 'required|numeric|gte:min_interest_rate'
+        ]); 
+
+        $this->planToUpdate->update([
+            'title' => $this->title,
+            'description' => $this->description,
+            'min_investment_amount' => $this->min_amount,
+            'max_investment_amount' => $this->max_amount,
+            'min_interest_rate' => $this->min_interest_rate,
+            'max_interest_rate' => $this->max_interest_rate
+        ]);
+
+        $this->reset(['title', 'description', 'min_amount', 'max_amount', 'min_interest_rate', 'max_interest_rate']);
+        session()->flash('success', 'Plan Updated successfully!');
+
+        $this->planToUpdate = null;
+
+    }
+
     public function createPlan()
     {
         $this->validate([
