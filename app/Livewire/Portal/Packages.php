@@ -78,9 +78,11 @@ class Packages extends Component
 
     public function submitPackagePurchase()
     {
+        $min_investment_pkr = $this->selectedPlan->min_investment_amount * 278;
+        $max_investment_pkr = $this->selectedPlan->max_investment_amount * 278;
 
         $this->validate([
-            'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}",
+            'amount' => "required|numeric|min:{$min_investment_pkr}|max:{$max_investment_pkr}",
             'payment_proof' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
@@ -96,7 +98,7 @@ class Packages extends Component
             }
 
             $subscription = Subscription::create([
-                'amount' => $this->amount,
+                'amount' => floor($this->amount / 278),
                 'payment_proof' => $proofPath,
                 'user_id' => Auth::id(),
                 'plan_id' => $this->selectedPlan->id
@@ -125,9 +127,12 @@ class Packages extends Component
 
     public function setModal($modalID)
     {
+        $min_investment_pkr = $this->selectedPlan->min_investment_amount * 278;
+        $max_investment_pkr = $this->selectedPlan->max_investment_amount * 278;
+
         if ($this->currentModal == 1) {
             $this->validate([
-                'amount' => "required|numeric|min:{$this->selectedPlan->min_investment_amount}|max:{$this->selectedPlan->max_investment_amount}"
+                'amount' => "required|numeric|min:{$min_investment_pkr}|max:{$max_investment_pkr}",
             ]);
         }
         $this->currentModal = $modalID;

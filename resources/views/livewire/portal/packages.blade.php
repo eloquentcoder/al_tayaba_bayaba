@@ -23,7 +23,7 @@
         @foreach ($plans as $plan)
             <div class="rounded-md bg-white text-[#0f277e] p-5 text-center">
                 <h1 class="font-bold text-4xl">{{ $plan->title }}</h1>
-                <p class="mn-2 text-2xl">₹{{ number_format($plan->min_investment_amount * 277.96) }} - ₹{{ number_format($plan->max_investment_amount * 277.96) }}</p>
+                <p class="mn-2 text-2xl">${{ number_format($plan->min_investment_amount) }} - ${{ number_format($plan->max_investment_amount) }}</p>
                 <div class="bg-[#0f277e] text-white rounded-md">{{ $plan->min_interest_rate }}% -
                     {{ $plan->max_interest_rate }}% every month</div>
                 <p class="text-[#0f277e] mt-3 text-xs">Profit For Every Day</p>
@@ -116,8 +116,8 @@
                     &times;
                 </button>
             </div>
-            <p class="text-sm mb-2">Amount Limit: ${{ $selectedPlan ? $selectedPlan->min_investment_amount : 0 }} -
-                ${{ $selectedPlan ? $selectedPlan->max_investment_amount : 0 }}</p>
+            <p class="text-sm mb-2">Amount Limit: PKR{{ $selectedPlan ? number_format($selectedPlan->min_investment_amount * 278) : 0 }} -
+                PKR{{ $selectedPlan ? number_format($selectedPlan->max_investment_amount * 278) : 0 }}</p>
             <p class="text-sm mb-4">Charge: 0.0 $</p>
             <div class="mb-4">
                 <label for="amount" class="block text-sm font-bold mb-1">Amount</label>
@@ -125,7 +125,7 @@
                     <input id="amount" type="number" placeholder="Enter amount" wire:model="amount"
                         class="w-full p-2 borderfocus:outline-none text-black">
                     <span
-                        class="bg-gradient-to-r from-[#0f277e] to-600 text-white font-bold py-2 px-4 rounded-r-md">USD</span>
+                        class="bg-gradient-to-r from-[#0f277e] to-600 text-white font-bold py-2 px-4 rounded-r-md">PKR</span>
                 </div>
             @error('amount')
                 <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -154,18 +154,18 @@
             <div class="my-4 space-y-1">
                 <div class="text-lg text-center space-x-2 text-[#0f277e]">
                     <span>Amount:</span>
-                    <span id="confirmationAmount">{{ $amount }}</span> USD
+                    <span id="confirmationAmount">{{ $amount }}</span> PKR
                 </div>
                 <div class="text-lg text-center space-x-2 text-[#0f277e]">
                     <span>Charge:</span>
-                    <span id="confirmationAmount">0.00</span> USD
+                    <span id="confirmationAmount">0.00</span> PKR
                 </div>
                 <div class="text-lg text-center space-x-2 text-[#0f277e]">
                     <span>Conversation Rate:</span>
                     <span id="confirmationAmount">0.00 USD = 278 PKR</span>
                 </div>
                 <div class="text-lg text-center space-x-2 text-[#0f277e]">
-                    <span id="confirmationAmount">In PKR: {{ number_format(( (int) $amount) * 278) }}</span>
+                    <span id="confirmationAmount">In USD: {{ number_format(( (int) $amount) / 278) }}</span>
                 </div>
             </div>
             <button id="openFinalModalButton" wire:click="setModal('3')"
@@ -182,8 +182,8 @@
             <div class="flex justify-between items-center mb-4">
                 <div>
                     <h2 class="text-lg font-bold">Please follow the instructions below</h2>
-                    <p class="text-xs">You have requested to deposit {{ $amount }} USD. Please pay
-                        {{ $amount * 278 }} PKR for successful payment</p>
+                    <p class="text-xs">You have requested to deposit {{ $amount }} PKR. Please pay
+                        {{ $amount }} PKR for successful payment</p>
                 </div>
                 <button wire:click="toggleModal" class="text-yellow-400 hover:text-yellow-600">
                     &times;
