@@ -15,9 +15,9 @@
     @endif
 
     @if ($to_delete)
-        <button wire:click="deletePlan({{ $planId }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-3">
+        {{-- <button wire:click="deletePlan({{ $planId }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-3">
             Delete Plan
-        </button>
+        </button> --}}
         <button wire:click="updatePlan({{ $planId }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3">
             Edit Plan
         </button>

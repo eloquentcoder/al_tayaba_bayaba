@@ -23,7 +23,7 @@
         @foreach ($plans as $plan)
             <div class="rounded-md bg-white text-[#0f277e] p-5 text-center">
                 <h1 class="font-bold text-4xl">{{ $plan->title }}</h1>
-                <p class="mn-2 text-2xl">${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}</p>
+                <p class="mn-2 text-2xl">₹{{ number_format($plan->min_investment_amount * 277.96) }} - ₹{{ number_format($plan->max_investment_amount * 277.96) }}</p>
                 <div class="bg-[#0f277e] text-white rounded-md">{{ $plan->min_interest_rate }}% -
                     {{ $plan->max_interest_rate }}% every month</div>
                 <p class="text-[#0f277e] mt-3 text-xs">Profit For Every Day</p>
@@ -165,7 +165,7 @@
                     <span id="confirmationAmount">0.00 USD = 278 PKR</span>
                 </div>
                 <div class="text-lg text-center space-x-2 text-[#0f277e]">
-                    <span id="confirmationAmount">In PKR: {{ $amount * 278 }}</span>
+                    <span id="confirmationAmount">In PKR: {{ number_format(( (int) $amount) * 278) }}</span>
                 </div>
             </div>
             <button id="openFinalModalButton" wire:click="setModal('3')"
