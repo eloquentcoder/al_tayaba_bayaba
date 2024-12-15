@@ -41,7 +41,7 @@ Route::get('plan', Plan::class)->name('home.plan');
 Route::get('about', About::class)->name('home.about');
 Route::get('contact-us', ContactUs::class)->name('home.contact');
 
-Route::get('admin/login', AdminLogin::class)->name('admin.login');
+Route::get('admin/zafarsab/login', AdminLogin::class)->name('admin.login');
 Route::get('login', Login::class)->name('login');
 Route::get('register', Register::class)->name('register');
 Route::get('2fa/verify', TwoFAVerify::class)->name('2fa.verify');
@@ -69,7 +69,7 @@ Route::middleware(['auth'])->as('portal.')->group(function () {
 
 });
 
-Route::middleware('auth_admin')->as('admin.')->prefix("admin")->group(function () {
+Route::middleware('auth_admin')->as('admin.')->prefix("admin/zafarsab")->group(function () {
     Route::get('dashboard', AdminDashboard::class)->name('dashboard');
     Route::get('profile', AdminProfile::class)->name('profile');
     Route::get('deposits', Deposits::class)->name('deposits');
