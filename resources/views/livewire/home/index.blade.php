@@ -303,47 +303,29 @@
             </div>
 
             <div class="row ">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="box" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-anchor-placement="center-bottom">
-                        <h2>PLATINUM</h2>
-                        <!-- <h4 class="golden-text">Monthly Rental Plan</h4> -->
-                        <h3>$100 - $50000</h3>
-                        <div class="bg">
-                            <span class="golden-text">8% - 10% <small class="small-font">6 Month </small></span>
-                        </div>
+                @foreach ($plans as $plan)
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="box" data-aos="fade-up" data-aos-duration="800"
+                            data-aos-anchor-placement="center-bottom">
+                            <h2>{{ $plan->title }}</h2>
+                            <!-- <h4 class="golden-text">Monthly Rental Plan</h4> -->
+                            <h3>${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}</h3>
+                            <div class="bg">
+                                <span class="golden-text">{{ $plan->min_interest_rate }}% -
+                                    {{ $plan->max_interest_rate }}% <small class="small-font">Every Month</small></span>
+                            </div>
 
-                        <h4 class="golden-text">GET 2X APRECIATION</h4>
-                        <!-- <h4>Any Hidden Charges :
+                            <h4 class="golden-text">{{ $plan->description }}</h4>
+                            <!-- <h4>Any Hidden Charges :
                                 <small><span class="badge-small badge bg-danger">No</span></small></h4> -->
-                        <h4> <span class="golden-text">One Off Compound Trading </span> </h4>
-                        <button class="gold-btn btn investNow" type="button" data-price="$100 - $50000"
-                            data-resource="{&quot;id&quot;:11,&quot;name&quot;:&quot;PLATINUM&quot;,&quot;badge&quot;:&quot;Premium&quot;,&quot;minimum_amount&quot;:&quot;100&quot;,&quot;maximum_amount&quot;:&quot;50000&quot;,&quot;fixed_amount&quot;:&quot;0&quot;,&quot;profit&quot;:&quot;0.40&quot;,&quot;profit_type&quot;:1,&quot;schedule&quot;:24,&quot;status&quot;:1,&quot;is_capital_back&quot;:0,&quot;is_lifetime&quot;:0,&quot;repeatable&quot;:655,&quot;featured&quot;:1,&quot;created_at&quot;:&quot;2024-06-29T23:28:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2024-08-24T12:41:13.000000Z&quot;,&quot;price&quot;:&quot;$100 - $50000&quot;}">Purchase
-                            Now </button>
-
-                    </div>
-                </div>
-                <!-- second card here -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="box" data-aos="fade-up" data-aos-duration="800"
-                        data-aos-anchor-placement="center-bottom">
-                        <h2>DIAMOND</h2>
-                        <!-- <h4 class="golden-text">Complete Plan</h4> -->
-                        <h3>$100 - $50000</h3>
-                        <div class="bg">
-                            <span class="golden-text">8% - 10% <small class="small-font">6 Month</small></span>
+                            <!-- <h4>  <span class="golden-text">Total 125 % + </span>   </h4> -->
+                            <button class="gold-btn btn investNow" type="button"
+                                data-price="${{ $plan->min_investment_amount }} - ${{ $plan->max_investment_amount }}"
+                                data-resource="{&quot;id&quot;:11,&quot;name&quot;:&quot;{{ $plan->title }}&quot;,&quot;badge&quot;:&quot;Premium&quot;,&quot;minimum_amount&quot;:&quot;{{ $plan->min_investment_amount }}&quot;,&quot;maximum_amount&quot;:&quot;{{ $plan->max_investment_amount }}&quot;,&quot;fixed_amount&quot;:&quot;0&quot;,&quot;profit&quot;:&quot;{{ $plan->min_interest_rate }}&quot;,&quot;profit_type&quot;:1,&quot;schedule&quot;:24,&quot;status&quot;:1,&quot;is_capital_back&quot;:0,&quot;is_lifetime&quot;:0,&quot;repeatable&quot;:655,&quot;featured&quot;:1,&quot;created_at&quot;:&quot;2024-06-29T23:28:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2024-08-24T12:41:13.000000Z&quot;,&quot;price&quot;:&quot;$100 - $50000&quot;}">Purchase
+                                Now </button>
                         </div>
-
-                        <h4 class="golden-text">GET 1.5X APRECIATION</h4>
-                        <!-- <h4>Any Hidden Charges :
-                                <small><span class="badge-small badge bg-danger">No</span></small></h4> -->
-                        <h4> <span class="golden-text">One Off Compound Trading </span> </h4>
-                        <button class="gold-btn btn investNow" type="button" data-price="$100 - $50000"
-                            data-resource="{&quot;id&quot;:11,&quot;name&quot;:&quot;DIAMOND &quot;,&quot;badge&quot;:&quot;Premium&quot;,&quot;minimum_amount&quot;:&quot;100&quot;,&quot;maximum_amount&quot;:&quot;50000&quot;,&quot;fixed_amount&quot;:&quot;0&quot;,&quot;profit&quot;:&quot;0.40&quot;,&quot;profit_type&quot;:1,&quot;schedule&quot;:24,&quot;status&quot;:1,&quot;is_capital_back&quot;:0,&quot;is_lifetime&quot;:0,&quot;repeatable&quot;:655,&quot;featured&quot;:1,&quot;created_at&quot;:&quot;2024-06-29T23:28:59.000000Z&quot;,&quot;updated_at&quot;:&quot;2024-08-24T12:41:13.000000Z&quot;,&quot;price&quot;:&quot;$100 - $50000&quot;}">Purchase
-                            Now </button>
-
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
