@@ -35,19 +35,19 @@
                     <h4 class="golden-text">Useful Links</h4>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('home.index') }}">Home</a>
                         </li>
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="{{ route('home.about') }}">About</a>
                         </li>
                         <li>
-                            <a href="plan.html">Packages</a>
+                            <a href="{{ route('home.plan') }}">Packages</a>
                         </li>
                         <li>
-                            <a href="blog.html">Promotions</a>
+                            <a href="#">Promotions</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="{{ route('home.contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -58,13 +58,13 @@
                     <h4 class="golden-text">Our Services</h4>
                     <ul>
                         <li>
-                            <a href="terms-amp-conditions/33.html">Terms &amp; Conditions</a>
+                            <a href="#">Terms &amp; Conditions</a>
                         </li>
                         <li>
-                            <a href="privacy-policy/34.html">Privacy Policy</a>
+                            <a href="#">Privacy Policy</a>
                         </li>
                         <li>
-                            <a href="faq.html">FAQ</a>
+                            <a href="#">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -80,12 +80,12 @@
                         </li>
                         <li>
                             <!-- <img src="assets/themes/deepblack/img/icon/email.png" alt="email" /> -->
-                            <div class="textcolor">support@Aitayabauros.com</div>
+                            <div class="textcolor">altayaba980@gmail.com</div>
                         </li>
-                        <li>
+                        {{-- <li>
                             <!-- <img src="assets/themes/deepblack/img/icon/location.png" alt="address" /> -->
                             <div class="textcolor">846 Jalan Bukit Bintang, Kuala Lumpur 55100, Malaysia</div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid ">
-        <a class="navbar-brand golden-text" href="index.html">
+        <a class="navbar-brand golden-text" href="{{ route('home.index') }}">
             <img src="{{ asset('uploads/logo/logo.png') }}" width="90" height="60" alt="AL Tayaba International">
         </a>
         <button class="navbar-toggler p-0 " type="button" data-bs-toggle="collapse"
@@ -21,10 +21,10 @@
                     <a class="nav-link {{ request()->routeIs('home.about') ? 'active' : '' }}" href="{{ route('home.about') }}">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="blog.html">Promotions</a>
+                    <a class="nav-link " href="#">Promotions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="faq.html">FAQ</a>
+                    <a class="nav-link " href="#">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('home.contact') ? 'active' : '' }}" href="{{ route('home.contact') }}">Contact</a>
