@@ -29,7 +29,7 @@
                         <h2>GET IN TOUCH</h2>
                         <p>Let's Ask Your Questions</p>
                     </div>
-                    <div class="box mb-5">
+                    {{-- <div class="box mb-5">
                         <div class="img">
                             <img src="{{ asset('themes/deepblack/img/icon/location2.png') }}" alt="location image" />
                         </div>
@@ -37,7 +37,7 @@
                             <h4 class="golden-text">Our Location</h4>
                             <p class="golden-text">846 Jalan Bukit Bintang, Kuala Lumpur 55100, Malaysia</p>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="box mb-5">
                         <div class="img">
                             <img src="{{ asset('themes/deepblack/img/icon/email2.png') }}" alt="email image" />
