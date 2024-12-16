@@ -30,6 +30,7 @@ use App\Http\Middleware\AdminAuthMiddleware;
 use App\Livewire\Admin\Profile as AdminProfile;
 use App\Livewire\Portal\PackagePurchaseHistory;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Settings;
 use App\Livewire\Admin\Transactions as AdminTransactions;
 use App\Livewire\Admin\Users;
 use App\Livewire\Admin\WithdrawalRequests;
@@ -80,6 +81,7 @@ Route::middleware('auth_admin')->as('admin.')->prefix("admin/zafarsab")->group(f
     Route::get('contact-forms', ContactForms::class)->name('contact-forms');
     Route::get('transactions', AdminTransactions::class)->name('transactions');
     Route::get('withdrawal-requests', WithdrawalRequests::class)->name('withdrawal-requests');
+    Route::get('settings', Settings::class)->name('settings');
 });
 
 

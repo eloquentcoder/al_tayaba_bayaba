@@ -44,11 +44,17 @@
                     <select id="wallet" wire:model="selected_wallet" type="number"
                         class="w-full p-2 border text-[#0f277e] focus:outline-none">
                         <option value="">-- Select Wallet --</option>
-                        <option value="sales_bonus_balance">Referral Wallet -${{ auth()->user()->balance->sales_bonus_balance }}</option>
+                        <option value="sales_bonus_balance">Referral Wallet
+                            -${{ auth()->user()->balance->sales_bonus_balance }}</option>
 
-                        {{-- <option value="emr_balance">Rental Wallet - ${{ auth()->user()->balance->emr_balance }}</option>
-                        <option value="emr_share_balance">Rental Profit Wallet - ${{ auth()->user()->balance->emr_share_balance }}</option> --}}
-                        
+                        @if ($is_withdrawal_day)
+                            <option value="emr_balance">Rental Wallet - ${{ auth()->user()->balance->emr_balance }}
+                            </option>
+                            <option value="emr_share_balance">Rental Profit Wallet -
+                                ${{ auth()->user()->balance->emr_share_balance }}</option>
+                        @endif
+
+
                     </select>
                 </div>
                 @error('selected_wallet')
@@ -70,7 +76,7 @@
             <button wire:click="requestWithdrawal"
                 class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 font-bold py-2 px-4 text-white rounded-full hover:from-blue-500 hover:to-blue-700">
                 <span wire:loading.remove>NEXT</span>
-                <span wire:loading>Loading...</span>  
+                <span wire:loading>Loading...</span>
             </button>
         </div>
     </div>

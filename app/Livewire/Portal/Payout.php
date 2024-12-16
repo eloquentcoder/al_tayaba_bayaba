@@ -3,7 +3,9 @@
 namespace App\Livewire\Portal;
 
 use App\Models\Balance;
+use App\Models\Setting;
 use App\Models\Withdrawal;
+use Carbon\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -14,6 +16,17 @@ class Payout extends Component
 
     public $amount;
     public $selected_wallet;
+
+    public $is_withdrawal_day = false;
+
+    public function mount()
+    {
+        // Fetch the withdrawal day from settings
+        $withdrawal_day = Setting::where('key', 'withdrawal_day')->value('value');
+
+        // Check if today matches the withdrawal day
+        $this->is_withdrawal_day = Carbon::now()->day == (int) $withdrawal_day;
+    }
 
     public function setModal($currentPage)
     {

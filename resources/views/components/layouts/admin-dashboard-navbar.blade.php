@@ -11,7 +11,8 @@
             <!-- Dropdown Menu -->
             <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-20">
                 <a href="{{ route('admin.profile') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">My Profile</a>
-                <form action="{{ route('logout') }}" method="POST" class="inline">
+                <a href="{{ route('admin.settings') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                <form action="{{ route('logout') }}" method="POST" class="block">
                     @csrf
                     <button type="submit" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</button>
                 </form>    
