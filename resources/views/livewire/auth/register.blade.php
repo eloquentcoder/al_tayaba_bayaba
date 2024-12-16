@@ -875,7 +875,10 @@
                                         already User?
                                         <a href="{{ route('login') }}" class="golden-text">login</a>
                                     </div>
-                                    <button type="submit" class="gold-btn">Sign Up</button>
+                                    <button class="gold-btn-block" type="submit" wire:loading.attr="disabled">
+                                        <span wire:loading.remove>Sign up</span>
+                                        <span wire:loading>Loading...</span>
+                                    </button>
                                 </div>
                             </div>
                         </form>

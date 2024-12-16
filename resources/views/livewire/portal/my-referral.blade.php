@@ -1,6 +1,5 @@
 <div class="m-10">
     <h1 class="text-5xl">My Referral</h1>
-
     <div class="bg-white p-5">
         <h1 class="text-[#0f277e] text-xl font-bold mb-3">My Referral Link</h1>
         <div class="bg-neutral-900 rounded-lg p-4 flex items-center justify-between">

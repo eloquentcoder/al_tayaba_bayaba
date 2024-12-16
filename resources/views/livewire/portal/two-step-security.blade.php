@@ -37,6 +37,7 @@
                     <button wire:click="disabled2FA"
                     class="w-full bg-red-500 text-white font-semibold py-3 rounded-lg transition-all duration-300">
                     Disable Two Factor Authenticator
+                    
                 </button>
                 </div>
             </div>

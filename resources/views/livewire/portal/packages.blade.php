@@ -211,7 +211,8 @@
                     </div>
                     <button type="submit"
                         class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 text-white font-bold py-2 px-4 rounded-full hover:from-blue-500 hover:to-blue-700">
-                        Deposit
+                        <span wire:loading.remove>Purchase</span>
+                        <span wire:loading>Loading...</span>  
                     </button>
                 </div>
             </form>

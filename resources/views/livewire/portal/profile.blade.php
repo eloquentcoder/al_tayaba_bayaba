@@ -127,7 +127,8 @@
 
                     <button wire:click="updatePassword"
                         class="bg-gradient-to-r from-blue-500 to-[#0f277e] text-white px-6 py-2 rounded-full hover:from-[#0f277e] hover:to-blue-700 transition-all duration-300">
-                        Update Password
+                        <span wire:loading.remove>Update Password</span>
+                        <span wire:loading>Loading...</span>  
                     </button>
 
                     <!-- Full Width Address Field -->

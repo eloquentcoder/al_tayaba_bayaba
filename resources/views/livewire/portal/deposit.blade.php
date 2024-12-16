@@ -127,9 +127,9 @@
                         <input type="file" wire:model="payment_proof" id="payment_proof">
                     </div>
                 </div>
-                <button wire:click="submitDeposit"
-                    class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 text-white font-bold py-2 px-4 rounded-full hover:from-blue-500 hover:to-blue-700">
-                    Deposit
+                <button wire:click="submitDeposit" class="w-full bg-gradient-to-r from-[#0f277e] to-blue-600 text-white font-bold py-2 px-4 rounded-full hover:from-blue-500 hover:to-blue-700">
+                  <span wire:loading.remove>Deposit</span>
+                  <span wire:loading>Loading...</span>  
                 </button>
             </div>
         </div>
